@@ -1,0 +1,35 @@
+:root {
+  --bone: #F5F1EB;
+  --bone-deep: #EDE8E0;
+  --white: #FFFFFF;
+  --graphite: #262A2E;
+  --graphite-med: #52564A;
+  --graphite-light: #7A7D72;
+  --graphite-faint: #BDBCB4;
+  --graphite-ghost: #D8D6CE;
+  --graphite-whisper: #E8E6DE;
+  --accent: #008E8A;
+  --accent-dark: #00706E;
+  --accent-light: #7FC4C2;
+  --accent-pale: #D4EDEC;
+  --accent-glow: rgba(0, 142, 138, 0.15);
+  --radius: 0px;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --font-heading: 'Jura', sans-serif;
+}
+
+.dark {
+  --bone: #0B0E14;
+  --bone-deep: #10141C;
+  --white: #10141C;
+  --graphite: #E8E6DE;
+  --graphite-med: #9CA3AF;
+  --graphite-light: rgba(232, 230, 222, 0.35);
+  --graphite-ghost: rgba(255, 255, 255, 0.08);
+  --graphite-whisper: rgba(255, 255, 255, 0.04);
+  --accent: #00CCAA;
+  --accent-dark: #00FFD4;
+  --accent-light: #4AABA8;
+  --accent-glow: rgba(0, 204, 170, 0.2);
+}
