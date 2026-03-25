@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+
+# Build outputs
+dist/
+
+# Turborepo
+.turbo/
+
+# Vercel
+.vercel/
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Test coverage
+coverage/
