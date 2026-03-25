@@ -15,6 +15,18 @@ importers:
         specifier: ^5.8.0
         version: 5.9.3
 
+  packages/jurisdiction:
+    devDependencies:
+      '@taurus/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: ^5.8.0
+        version: 5.9.3
+      vitest:
+        specifier: ^3.0.0
+        version: 3.2.4
+
   packages/pqc-crypto:
     dependencies:
       '@noble/hashes':
