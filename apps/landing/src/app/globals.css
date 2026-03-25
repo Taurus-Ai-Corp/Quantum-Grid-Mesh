@@ -1,5 +1,141 @@
-/* Brand fonts — @import must precede all other rules */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Mono:wght@300;400;500;600&family=Jura:wght@300..700&display=swap');
-
 @import "tailwindcss";
 @import "@taurus/ui/styles";
+
+/* ================================================================
+   GLOBAL BASE STYLES
+   ================================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* Noise texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Glass morphism surface */
+.glass-surface {
+  background: rgba(16, 20, 28, 0.7);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Nav CTA button */
+.nav-cta-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #0B0E14;
+}
+.nav-cta-btn:hover {
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Primary button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #0B0E14;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+/* Secondary button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--graphite-med);
+  padding: 14px 0;
+  border: none;
+  border-bottom: 1px solid var(--graphite-ghost);
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Status dot animation */
+.dot-pulse {
+  animation: dotpulse 2s ease infinite;
+}
+@keyframes dotpulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Geo card hover */
+.geo-card {
+  border: 1px solid var(--graphite-ghost);
+  background: var(--bone-deep);
+  transition: border-color 0.2s, background 0.2s;
+}
+.geo-card:hover {
+  border-color: var(--accent);
+  background: rgba(0, 204, 170, 0.04);
+}
+
+/* Diff grid — gap rendered as border lines */
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--graphite-ghost);
+  border: 1px solid var(--graphite-ghost);
+}
+.diff-card {
+  background: var(--bone-deep);
+  transition: background 0.2s;
+}
+.diff-card:hover {
+  background: rgba(0, 204, 170, 0.04);
+}
+
+/* Competitive table highlight column */
+.comp-col-highlight td,
+.comp-col-highlight th {
+  background: rgba(0, 204, 170, 0.06);
+  color: var(--accent);
+}
