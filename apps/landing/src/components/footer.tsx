@@ -1,7 +1,7 @@
 const FOOTER_LINKS = {
   Product: [
     { label: 'Features', href: '#differentiators' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'Pricing', href: '/pricing' },
     { label: 'Docs', href: '/docs' },
     { label: 'API', href: '/docs/api' },
   ],

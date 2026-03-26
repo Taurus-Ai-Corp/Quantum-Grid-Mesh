@@ -22,7 +22,7 @@ export default function Nav() {
             ['Why Q-Grid', '#differentiators'],
             ['AI Agents', '#agents'],
             ['Frameworks', '#frameworks'],
-            ['Pricing', '#pricing'],
+            ['Pricing', '/pricing'],
             ['Blog', '/blog'],
           ].map(([label, href]) => (
             <a
