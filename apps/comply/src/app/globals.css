@@ -1,5 +1,36 @@
-/* Brand fonts — @import must precede all other rules */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Mono:wght@300;400;500;600&family=Jura:wght@300..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=IBM+Plex+Mono:wght@300;400;500;600&family=Jura:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "@taurus/ui/styles";
+
+:root {
+  --bone: #F8F9FA;
+  --bone-deep: #FFFFFF;
+  --graphite: #1A1D21;
+  --graphite-med: #4B5563;
+  --graphite-light: #9CA3AF;
+  --graphite-faint: #D1D5DB;
+  --graphite-ghost: #E5E7EB;
+  --graphite-whisper: #F3F4F6;
+  --accent: #008E8A;
+  --accent-dark: #00706E;
+  --accent-light: #E0F5F4;
+  --accent-glow: rgba(0, 142, 138, 0.08);
+  --jurisdiction-eu: #2563EB;
+  --jurisdiction-na: #DC2626;
+  --jurisdiction-in: #EA580C;
+  --jurisdiction-ae: #059669;
+  --radius: 8px;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-heading: 'Jura', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bone);
+  color: var(--graphite);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}

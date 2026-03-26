@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     '@taurus/jurisdiction',
     '@taurus/db',
     '@taurus/hedera',
+    '@clerk/nextjs',
   ],
   turbopack: {
     // Explicitly set the monorepo root so Next.js 16 Turbopack does not
