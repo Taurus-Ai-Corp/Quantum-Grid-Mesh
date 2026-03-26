@@ -1,27 +1,8 @@
 import type { Metadata } from 'next'
-import { DM_Sans, IBM_Plex_Mono, Jura } from 'next/font/google'
 import './globals.css'
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  axes: ['opsz'],
-  variable: '--font-sans',
-  display: 'swap',
-})
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-mono',
-  display: 'swap',
-})
-
-const jura = Jura({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-heading',
-  display: 'swap',
-})
+// Fonts loaded via CSS @import in globals.css (avoids Google Fonts fetch failures during parallel builds)
+// DM Sans (body), IBM Plex Mono (code), Jura (headings)
 
 export const metadata: Metadata = {
   title: {
@@ -50,10 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`dark ${dmSans.variable} ${ibmPlexMono.variable} ${jura.variable}`}
-    >
+    <html lang="en" className="dark">
       <body className="bg-[var(--bone)] text-[var(--graphite)] font-[var(--font-sans)] antialiased">
         {children}
       </body>
