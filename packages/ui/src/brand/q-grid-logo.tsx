@@ -2,11 +2,11 @@ import * as React from 'react'
 import { cn } from '../lib/utils.js'
 
 interface QGridLogoProps {
-  /** 'icon' = lattice only, 'mark' = lattice + wordmark, 'wordmark' = text only */
+  /** 'icon' = grid only, 'mark' = grid + wordmark, 'wordmark' = text only */
   variant?: 'icon' | 'mark' | 'wordmark'
   /** Override teal accent color */
   color?: string
-  /** Size in px — controls the lattice icon height */
+  /** Size in px — controls the grid icon height */
   size?: number
   /** Show "Quantum Grid Compliance" subtitle (only in 'mark' variant) */
   showSubtitle?: boolean
@@ -14,11 +14,11 @@ interface QGridLogoProps {
 }
 
 /**
- * Q-GRID Comply logo — lattice node cluster forming a Q shape.
+ * Q-GRID Comply logo — 3x3 grid mesh with diagonal lattice bonds.
  *
- * Uses 7 interconnected nodes in a crystallographic lattice pattern
- * with an asymmetric tail that forms the letter Q. Designed for
- * dark (#0B0E14) and light backgrounds.
+ * 9 nodes in a regular grid + 4 diagonal lattice connections + Q tail
+ * breaking symmetry bottom-right. Center node enlarged (governance).
+ * Concept B: pure "grid" minimalism.
  */
 export function QGridLogo({
   variant = 'mark',
@@ -27,76 +27,60 @@ export function QGridLogo({
   showSubtitle = false,
   className,
 }: QGridLogoProps) {
-  const lattice = (
+  const gridMesh = (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 64 64"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* Glow filter for nodes */}
       <defs>
-        <filter id="qgrid-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+        <filter id="qgrid-glow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="b" />
           <feMerge>
-            <feMergeNode in="blur" />
+            <feMergeNode in="b" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
       </defs>
 
-      {/*
-        Node positions (lattice grid forming Q shape):
-        A(20,12) --- B(44,12)
-        |  \      /  |
-        C(12,32)  D(32,28)  E(52,32)
-        |  /      \  |
-        F(20,52) --- G(44,52)
-                        \
-                         H(56,60) ← Q tail
-      */}
-
-      {/* Lattice connection lines */}
-      <g stroke={color} strokeWidth="1.5" strokeLinecap="round" opacity="0.6">
-        {/* Outer ring */}
-        <line x1="20" y1="12" x2="44" y2="12" />
-        <line x1="20" y1="12" x2="12" y2="32" />
-        <line x1="44" y1="12" x2="52" y2="32" />
-        <line x1="12" y1="32" x2="20" y2="52" />
-        <line x1="52" y1="32" x2="44" y2="52" />
-        <line x1="20" y1="52" x2="44" y2="52" />
-
-        {/* Inner cross-connections (lattice diagonals) */}
-        <line x1="20" y1="12" x2="32" y2="28" />
-        <line x1="44" y1="12" x2="32" y2="28" />
-        <line x1="12" y1="32" x2="32" y2="28" />
-        <line x1="52" y1="32" x2="32" y2="28" />
-        <line x1="32" y1="28" x2="20" y2="52" />
-        <line x1="32" y1="28" x2="44" y2="52" />
-
-        {/* Q tail — the signature asymmetric break */}
-        <line x1="44" y1="52" x2="56" y2="60" />
+      {/* Grid lines (horizontal + vertical) */}
+      <g stroke={color} strokeWidth="0.8" strokeLinecap="round" opacity="0.3">
+        <line x1="20" y1="20" x2="50" y2="20" />
+        <line x1="50" y1="20" x2="80" y2="20" />
+        <line x1="20" y1="50" x2="50" y2="50" />
+        <line x1="50" y1="50" x2="80" y2="50" />
+        <line x1="20" y1="80" x2="50" y2="80" />
+        <line x1="50" y1="80" x2="80" y2="80" />
+        <line x1="20" y1="20" x2="20" y2="50" />
+        <line x1="20" y1="50" x2="20" y2="80" />
+        <line x1="50" y1="20" x2="50" y2="50" />
+        <line x1="50" y1="50" x2="50" y2="80" />
+        <line x1="80" y1="20" x2="80" y2="50" />
+        <line x1="80" y1="50" x2="80" y2="80" />
+        {/* Diagonal lattice bonds */}
+        <line x1="20" y1="20" x2="50" y2="50" />
+        <line x1="50" y1="20" x2="80" y2="50" />
+        <line x1="20" y1="50" x2="50" y2="80" />
+        <line x1="50" y1="50" x2="80" y2="80" />
+        {/* Q tail */}
+        <line x1="80" y1="80" x2="95" y2="95" />
       </g>
 
-      {/* Lattice nodes */}
+      {/* Grid nodes */}
       <g filter="url(#qgrid-glow)">
-        {/* Top row */}
-        <circle cx="20" cy="12" r="3" fill={color} />
-        <circle cx="44" cy="12" r="3" fill={color} />
-
-        {/* Middle row */}
-        <circle cx="12" cy="32" r="3" fill={color} />
-        <circle cx="32" cy="28" r="4" fill={color} /> {/* Center node — larger */}
-        <circle cx="52" cy="32" r="3" fill={color} />
-
-        {/* Bottom row */}
-        <circle cx="20" cy="52" r="3" fill={color} />
-        <circle cx="44" cy="52" r="3" fill={color} />
-
-        {/* Q tail node */}
-        <circle cx="56" cy="60" r="2.5" fill={color} />
+        <circle cx="20" cy="20" r="3" fill={color} />
+        <circle cx="50" cy="20" r="3" fill={color} />
+        <circle cx="80" cy="20" r="3" fill={color} />
+        <circle cx="20" cy="50" r="3" fill={color} />
+        <circle cx="50" cy="50" r="4.5" fill={color} />
+        <circle cx="80" cy="50" r="3" fill={color} />
+        <circle cx="20" cy="80" r="3" fill={color} />
+        <circle cx="50" cy="80" r="3" fill={color} />
+        <circle cx="80" cy="80" r="3" fill={color} />
+        <circle cx="95" cy="95" r="2" fill={color} />
       </g>
     </svg>
   )
@@ -104,7 +88,7 @@ export function QGridLogo({
   if (variant === 'icon') {
     return (
       <span className={cn('inline-flex items-center', className)} aria-label="Q-GRID Comply">
-        {lattice}
+        {gridMesh}
       </span>
     )
   }
@@ -112,15 +96,11 @@ export function QGridLogo({
   if (variant === 'wordmark') {
     return (
       <span
-        className={cn(
-          'inline-flex flex-col font-[var(--font-heading)] tracking-tight',
-          className,
-        )}
+        className={cn('inline-flex flex-col font-[var(--font-heading)] tracking-tight', className)}
         aria-label="Q-GRID Comply"
       >
         <span className="flex items-baseline gap-0.5">
-          <span className="font-bold" style={{ color }}>Q</span>
-          <span className="font-bold">-GRID</span>
+          <span className="font-bold">Q-GRID</span>
           <span className="text-[var(--graphite-faint)] mx-0.5">/</span>
           <span className="font-bold" style={{ color }}>COMPLY</span>
         </span>
@@ -133,20 +113,12 @@ export function QGridLogo({
     )
   }
 
-  // variant === 'mark' — full logo: lattice + wordmark
   return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-2.5',
-        className,
-      )}
-      aria-label="Q-GRID Comply"
-    >
-      {lattice}
+    <span className={cn('inline-flex items-center gap-2.5', className)} aria-label="Q-GRID Comply">
+      {gridMesh}
       <span className="inline-flex flex-col font-[var(--font-heading)] tracking-tight leading-tight">
         <span className="flex items-baseline gap-0.5">
-          <span className="font-bold" style={{ color }}>Q</span>
-          <span className="font-bold">-GRID</span>
+          <span className="font-bold">Q-GRID</span>
           <span className="text-[var(--graphite-faint)] mx-0.5">/</span>
           <span className="font-bold" style={{ color }}>COMPLY</span>
         </span>
