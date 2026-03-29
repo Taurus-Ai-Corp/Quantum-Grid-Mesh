@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
-      payment_method_types: ['card'],
+      // Dynamic payment methods — Stripe auto-selects based on user location/wallet
       line_items: [
         {
           price_data: {
