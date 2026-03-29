@@ -1,5 +1,5 @@
 import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
-import { jurisdictionEnum } from './enums.js'
+import { jurisdictionEnum } from './enums'
 
 export const newsletter = pgTable('newsletter', {
   id: uuid('id').primaryKey().defaultRandom(),

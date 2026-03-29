@@ -1,5 +1,5 @@
 import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
-import { jurisdictionEnum, planEnum } from './enums.js'
+import { jurisdictionEnum, planEnum } from './enums'
 
 export const organizations = pgTable('organizations', {
   id: uuid('id').primaryKey().defaultRandom(),
