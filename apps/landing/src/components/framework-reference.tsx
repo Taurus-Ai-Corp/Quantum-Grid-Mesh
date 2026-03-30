@@ -77,10 +77,10 @@ const STATUS_STYLES: Record<'Active' | 'Pending' | 'Upcoming', string> = {
 
 export default function FrameworkReference() {
   return (
-    <section id="frameworks" className="py-24 border-t border-[var(--graphite-ghost)]">
+    <section id="frameworks" className="py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Section label */}
-        <div className="flex items-center gap-5 mb-14">
+        <div className="reveal flex items-center gap-5 mb-14">
           <span className="font-mono text-[32px] font-bold text-[var(--accent)] leading-none select-none">
             04
           </span>
@@ -97,7 +97,7 @@ export default function FrameworkReference() {
         {/* Two-column layout */}
         <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 items-start">
           {/* Left: table */}
-          <div className="border border-[var(--graphite-ghost)] overflow-hidden">
+          <div className="reveal border border-[var(--graphite-ghost)] overflow-hidden">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-[var(--graphite-ghost)]">
@@ -144,7 +144,7 @@ export default function FrameworkReference() {
           </div>
 
           {/* Right: description */}
-          <div className="flex flex-col gap-6">
+          <div className="reveal flex flex-col gap-6" style={{ transitionDelay: '150ms' }}>
             <p className="text-[15px] leading-[1.75] text-[var(--graphite-med)]">
               Q-Grid maps your infrastructure against the complete landscape of quantum-safe
               compliance requirements. From NIST PQC standards to the EU AI Act&apos;s August 2026

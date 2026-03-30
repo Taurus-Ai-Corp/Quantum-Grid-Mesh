@@ -40,10 +40,10 @@ export default function GeoSelector() {
     <section id="jurisdictions" className="py-[100px]">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Section label */}
-        <div className="flex items-baseline gap-4 mb-12">
+        <div className="reveal flex items-baseline gap-4 mb-12">
           <span className="font-mono text-[14px] text-[var(--accent)] tracking-[0.02em]">02</span>
           <div>
-            <h2 className="font-[var(--font-heading)] text-[28px] font-semibold tracking-[-0.02em] leading-[1.2] text-[var(--graphite)]">
+            <h2 className="font-[var(--font-heading)] text-[28px] font-semibold leading-[1.2] text-[var(--graphite)]">
               Choose Your Jurisdiction
             </h2>
             <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-[var(--graphite-med)] mt-1">
@@ -53,7 +53,7 @@ export default function GeoSelector() {
         </div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--graphite-ghost)]">
+        <div className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--graphite-ghost)]">
           {GEO_CARDS.map(({ flag, region, href, regs, tag, live }) => (
             <a
               key={tag}

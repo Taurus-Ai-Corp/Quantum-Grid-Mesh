@@ -19,7 +19,7 @@ const FOOTER_LINKS = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--graphite-ghost)] pt-16 pb-10">
+    <footer className="pt-16 pb-10 border-t border-[var(--graphite-ghost)]">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Top grid */}
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">

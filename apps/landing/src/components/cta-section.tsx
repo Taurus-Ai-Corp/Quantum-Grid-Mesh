@@ -25,18 +25,18 @@ export default function CtaSection() {
   return (
     <section
       id="start"
-      className="py-24 border-t border-[var(--graphite-ghost)]"
+      className="py-24"
     >
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="max-w-[640px] mx-auto text-center">
           {/* Label */}
-          <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-[var(--accent)] mb-5">
+          <p className="reveal font-mono text-[11px] tracking-[0.14em] uppercase text-[var(--accent)] mb-5">
             /// NEXT STEP
           </p>
 
           {/* Heading */}
           <h2
-            className="font-[var(--font-heading)] font-bold tracking-[-0.02em] leading-[1.1] mb-5"
+            className="reveal font-[var(--font-heading)] font-bold leading-[1.1] mb-5"
             style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}
           >
             Get Your Full
@@ -45,7 +45,7 @@ export default function CtaSection() {
           </h2>
 
           {/* Description */}
-          <p className="text-[16px] leading-[1.75] text-[var(--graphite-med)] mb-10">
+          <p className="reveal text-[16px] leading-[1.75] text-[var(--graphite-med)] mb-10" style={{ transitionDelay: '100ms' }}>
             The free PQC scan surfaces your exposure. The full report includes remediation
             code, agent-driven migration planning, NIST FIPS&nbsp;203/204 compliance mapping,
             and a Hedera-anchored audit trail — free for 14&nbsp;days.
