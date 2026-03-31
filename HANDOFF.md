@@ -217,6 +217,34 @@ Enterprise customers get self-hosted AI report generation. Data never leaves the
 
 ---
 
-**The architecture is sound. The code is tested. The differentiator (PQC + Hedera) is real. Ship it.**
+## PHASE 2 — 10 Priority Features (Revenue-Ranked)
+
+| # | Feature | Revenue Impact |
+|---|---|---|
+| 1 | Enterprise onboarding wizard (team invites, CISO flow, Clerk Organizations) | Unlocks enterprise sales |
+| 2 | Continuous monitoring (weekly re-scan of connected infrastructure) | Sticky subscriptions |
+| 3 | CycloneDX CBOM auto-generation (GitHub/code scanning for crypto usage) | Enterprise tier differentiator |
+| 4 | RAG-powered AI reports (regulatory document intelligence via Pinecone) | Report quality = willingness to pay |
+| 5 | Hybrid migration machine (5-state: LEGACY→HYBRID→PQC_ONLY) | Migration revenue ($75K-$1M) |
+| 6 | W3C Verifiable Credentials on Hedera (supply chain propagation) | Network effects |
+| 7 | Per-audience dashboards (CISO/CTO/CFO/Board/Regulator views) | Enterprise UX |
+| 8 | Regulatory submission pipeline (one-click to EU AI Database, OSFI, RBI) | Unique capability |
+| 9 | Public API + SDK + CI/CD plugins (GitHub Actions, GitLab CI) | Developer adoption |
+| 10 | Industry benchmarking (QRS percentiles vs industry average) | Data moat |
+
+### Canada Pipeline
+OSFI B-13 → PIPEDA → CCCS PQC migration → OSFI reporting (na.q-grid.net, JURISDICTION=na)
+
+### PRD Reference
+`/Users/taurus_ai/Documents/HEDERA/Comply.Q-Grid.in/products/gridera/Q-GRID-COMPLY-PRD-ARCHITECTURE.md`
+
+### Key Phase 2 Principles
+- Automated discovery > manual forms
+- Continuous monitoring > point-in-time assessment
+- Compliance → Migration pipeline (diagnose then fix)
+- Supply chain propagation via W3C VCs (network effect)
+- RAG over regulatory docs for AI reports
+
+---
 
 **The architecture is sound. The code is tested. The differentiator (PQC + Hedera) is real. Ship it.**
