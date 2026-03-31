@@ -217,18 +217,6 @@ Enterprise customers get self-hosted AI report generation. Data never leaves the
 
 ---
 
-## TRADEMARK SITUATION (URGENT)
-
-- **CONFLICT:** `QGRID` (Serial 98725832) is LIVE/REGISTERED by QGrid LLC (Cincinnati, OH) in Class 042 (SaaS)
-- **Risk:** HIGH for "Q-GRID" — confusingly similar in same class
-- **Mitigation:** Already rebranded to "QUANTUM GRID" in all code, nav, footer, metadata, OG tags
-- **Action:** File "QUANTUM GRID" trademark in Classes 009 + 042 via Wyoming LLC ($700)
-- **Domain:** `q-grid.net` is fine — domain ownership ≠ trademark
-- **Backup:** ARQ-Q / ARQ-QUANTUM available if "QUANTUM GRID" is contested (low conflict)
-- **MUST DO:** Consult trademark attorney before filing ($300-500 consultation)
-
----
-
 ## PHASE 2 — 10 Priority Features (Revenue-Ranked)
 
 | # | Feature | Revenue Impact |

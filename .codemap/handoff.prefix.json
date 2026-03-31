@@ -1,0 +1,29 @@
+{
+  "file_count": 223,
+  "hubs": [
+    {
+      "path": "packages/db/src/schema/organizations.ts",
+      "importers": 7
+    },
+    {
+      "path": "packages/db/src/schema/enums.ts",
+      "importers": 6
+    },
+    {
+      "path": "apps/comply/src/components/jurisdiction-badge.tsx",
+      "importers": 3
+    },
+    {
+      "path": "apps/comply/src/lib/assessment-scorer.ts",
+      "importers": 3
+    },
+    {
+      "path": "apps/comply/src/lib/assessment-store.ts",
+      "importers": 3
+    },
+    {
+      "path": "sales-engine/agents/orchestrator.ts",
+      "importers": 3
+    }
+  ]
+}

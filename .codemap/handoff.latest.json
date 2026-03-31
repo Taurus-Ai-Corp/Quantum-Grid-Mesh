@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-31T18:04:26.849485-04:00",
+  "root": "/Users/taurus_ai/Documents/HEDERA/q-grid-platform",
+  "branch": "main",
+  "base_ref": "origin/main",
+  "prefix": {
+    "file_count": 223,
+    "hubs": [
+      {
+        "path": "packages/db/src/schema/organizations.ts",
+        "importers": 7
+      },
+      {
+        "path": "packages/db/src/schema/enums.ts",
+        "importers": 6
+      },
+      {
+        "path": "apps/comply/src/components/jurisdiction-badge.tsx",
+        "importers": 3
+      },
+      {
+        "path": "apps/comply/src/lib/assessment-scorer.ts",
+        "importers": 3
+      },
+      {
+        "path": "apps/comply/src/lib/assessment-store.ts",
+        "importers": 3
+      },
+      {
+        "path": "sales-engine/agents/orchestrator.ts",
+        "importers": 3
+      }
+    ]
+  },
+  "delta": {
+    "changed": [
+      {
+        "path": "HANDOFF.md",
+        "hash": "b6f2007b96cad11a0e4646e83bb5f01e1b4cfab7796c5609857be2c428a95944",
+        "size": 8981,
+        "status": "modified"
+      },
+      {
+        "path": "HANDOFF[phase1_to_phase2].md",
+        "hash": "dc274e0abf20579977d93330adb6049e90206d56da27c7868dd73cafdd674f0f",
+        "size": 10480,
+        "status": "untracked"
+      }
+    ],
+    "risk_files": [],
+    "recent_events": [],
+    "next_steps": [
+      "Run tests covering changed files before handoff."
+    ],
+    "open_questions": [
+      "Live watch state was unavailable; timeline may be incomplete."
+    ]
+  },
+  "prefix_hash": "c85a93b48e0f975af68e261e579017289fb2fe9e3beb11e86dd6b215041b411f",
+  "delta_hash": "afd8ad7faa44b4a77cb54aeccd1960a0bd07ddd56b891849fe89c6a1770eab02",
+  "combined_hash": "2af539260fe788ce72f3054d923df479948ad10bbcf710cc5314af03058d5d8c",
+  "metrics": {
+    "prefix_bytes": 416,
+    "delta_bytes": 473,
+    "total_bytes": 889,
+    "unchanged_bytes": 0,
+    "reuse_ratio": 0,
+    "prefix_reused": false,
+    "delta_reused": false
+  },
+  "changed_files": [
+    "HANDOFF.md",
+    "HANDOFF[phase1_to_phase2].md"
+  ],
+  "risk_files": [],
+  "recent_events": [],
+  "next_steps": [
+    "Run tests covering changed files before handoff."
+  ],
+  "open_questions": [
+    "Live watch state was unavailable; timeline may be incomplete."
+  ]
+}
