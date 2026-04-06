@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.0.7",
+    "@taurus-ai/swarm-spawner": "^0.4.0",
     "@taurus/db": "workspace:*",
     "@taurus/hedera": "workspace:*",
     "@taurus/jurisdiction": "workspace:*",
