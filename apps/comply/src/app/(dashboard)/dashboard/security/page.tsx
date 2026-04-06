@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Shield, Key, AlertTriangle, RefreshCw, X, CheckCircle, Loader2, BookOpen } from 'lucide-react'
+import { MigrationWizard } from '@/components/migration-wizard'
 
 // ---------- Types ----------
 
@@ -522,6 +523,11 @@ export default function SecurityPage() {
             </div>
           )
         })}
+      </div>
+
+      {/* Migration Wizard */}
+      <div className="mb-8">
+        <MigrationWizard />
       </div>
 
       {/* Two-column layout: table + gauge */}
