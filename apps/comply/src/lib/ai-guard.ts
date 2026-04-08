@@ -173,6 +173,9 @@ async function execute(input: GuardInput): Promise<GuardResult> {
     attestation.signature = signed.signature
     attestation.algorithm = signed.algorithm
 
+    // Fire-and-forget audit trail write
+    void logAttestation(attestation)
+
     return {
       blocked: true,
       blockReason: `Input blocked by rule '${inputBlock.rule}': ${inputBlock.reason}`,
@@ -212,6 +215,9 @@ async function execute(input: GuardInput): Promise<GuardResult> {
     attestation.signature = signed.signature
     attestation.algorithm = signed.algorithm
 
+    // Fire-and-forget audit trail write
+    void logAttestation(attestation)
+
     return {
       blocked: true,
       blockReason: `Output blocked by rule '${outputBlock.rule}': ${outputBlock.reason}`,
@@ -240,11 +246,43 @@ async function execute(input: GuardInput): Promise<GuardResult> {
   attestation.signature = signed.signature
   attestation.algorithm = signed.algorithm
 
-  // 7. Return success
+  // 7. Fire-and-forget audit trail write
+  void logAttestation(attestation)
+
+  // 8. Return success
   return {
     response,
     blocked: false,
     attestation,
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Audit trail persistence (non-blocking)
+// ---------------------------------------------------------------------------
+
+async function logAttestation(attestation: GuardAttestation): Promise<void> {
+  try {
+    const { getDb } = await import('@/lib/db')
+    const { auditTrail } = await import('@taurus/db')
+    const db = getDb()
+    if (!db) return
+
+    await db.insert(auditTrail).values({
+      entityType: 'guard_attestation',
+      entityId: crypto.randomUUID(),
+      action: 'ai_guard_attestation',
+      model: attestation.model,
+      tokensIn: attestation.tokens_in,
+      tokensOut: attestation.tokens_out,
+      costUsd: attestation.cost_usd,
+      latencyMs: attestation.latency_ms,
+      guardVerdict: attestation.guard_verdict,
+      pqcSignature: attestation.signature,
+      hash: attestation.timestamp,
+    })
+  } catch {
+    // Non-blocking — guard works even if DB write fails
   }
 }
 
