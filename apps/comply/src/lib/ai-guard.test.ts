@@ -11,6 +11,7 @@ import {
   INPUT_RULES,
   OUTPUT_RULES,
 } from './ai-guard-rules'
+import { aiGuard } from './ai-guard'
 
 const ctx = { jurisdiction: 'EU' }
 
@@ -117,5 +118,63 @@ describe('GUARD Rule Exports', () => {
     expect(INPUT_RULES.length).toBe(3)
     expect(OUTPUT_RULES).toBeInstanceOf(Array)
     expect(OUTPUT_RULES.length).toBe(3)
+  })
+})
+
+describe('ai-guard execute', () => {
+  it('returns attestation with input and output verdicts', async () => {
+    const result = await aiGuard.execute({
+      prompt: 'Analyze risk for EU AI system',
+      llmCall: async () => JSON.stringify({ score: 75, riskLevel: 'limited' }),
+      jurisdiction: 'eu',
+    })
+    expect(result.attestation).toBeDefined()
+    expect(result.attestation.input_verdicts.length).toBeGreaterThanOrEqual(3)
+    expect(result.attestation.output_verdicts.length).toBeGreaterThanOrEqual(3)
+    expect(result.blocked).toBe(false)
+  })
+
+  it('blocks execution when input guard fails (PII)', async () => {
+    const result = await aiGuard.execute({
+      prompt: 'Send results to john@example.com',
+      llmCall: async () => '{}',
+      jurisdiction: 'eu',
+    })
+    expect(result.blocked).toBe(true)
+    expect(result.blockReason).toContain('no-pii')
+    expect(result.response).toBeUndefined()
+  })
+
+  it('blocks when output guard fails (invalid JSON)', async () => {
+    const result = await aiGuard.execute({
+      prompt: 'Analyze the system',
+      llmCall: async () => 'not json at all',
+      jurisdiction: 'eu',
+    })
+    expect(result.blocked).toBe(true)
+    expect(result.blockReason).toContain('valid-json')
+  })
+
+  it('includes PQC signature in attestation', async () => {
+    const result = await aiGuard.execute({
+      prompt: 'Analyze risk for EU AI system',
+      llmCall: async () => JSON.stringify({ score: 75 }),
+      jurisdiction: 'eu',
+    })
+    expect(result.attestation.signature).toBeDefined()
+    expect(result.attestation.signature.length).toBeGreaterThan(100)
+    expect(result.attestation.algorithm).toBe('ML-DSA-65')
+  })
+
+  it('measures latency', async () => {
+    const result = await aiGuard.execute({
+      prompt: 'Analyze risk',
+      llmCall: async () => {
+        await new Promise((r) => setTimeout(r, 50))
+        return JSON.stringify({ score: 50 })
+      },
+      jurisdiction: 'eu',
+    })
+    expect(result.attestation.latency_ms).toBeGreaterThanOrEqual(40) // allow small timing variance
   })
 })
