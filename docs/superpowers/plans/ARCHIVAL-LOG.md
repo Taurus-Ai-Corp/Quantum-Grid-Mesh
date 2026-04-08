@@ -50,15 +50,43 @@
 ## Archived Repos (moved to _archive/)
 | Directory | GitHub Remote | Reason |
 |-----------|-------------|--------|
+| Comply.Q-Grid.EU/ | Taurus-Ai-Corp/Comply.Q-Grid | Gen 2 reference, superseded by q-grid-platform |
+| Q-Grid.IN/ | Taurus-Ai-Corp/Q-GRID.IN | Gen 1, 24-agent system reference |
+| Q-Grid.CA/ | Taurus-Ai-Corp/Q-GRID | Hedera integration reference |
+| fraud-detection-demo/ | Taurus-Ai-Corp/fraud-detection-demo-private | Demo, not product |
+| multi-ai-devops/ | Taurus-Ai-Corp/multi-ai-devops | Stale |
+| INNOVATIVE_IDEAS_DOCS/ | Taurus-Ai-Corp/innovative-ideas-docs | Stale docs |
+| taurus-cli/ | Taurus-Ai-Corp/taurus-cli | Superseded by q-grid-platform |
+| huggingface-spaces/ | Taurus-Ai-Corp/huggingface-spaces | Reference only |
+| ml-pipeline/ | Taurus-Ai-Corp/ml-pipeline | Reference only |
 
 ## Deleted (duplicates/empties)
 | Directory | Reason |
 |-----------|--------|
+| Comply.Q-Grid.in/ | Duplicate of Comply.Q-Grid.EU/ (same remote + commit 79c9199) |
+| Rupee_Grid_pay_Q-Grid.in/ | Duplicate of Q-Grid.IN/ (same remote Taurus-Ai-Corp/Q-GRID.IN, branch pushed) |
+| node_modules/ | Orphan — old monorepo deps, 2GB (q-grid-platform is canonical) |
+| dist/ | Orphan build artifact (4KB) |
+| docker-extract/ | Empty directory |
+| Comply.Q-Grid.net/ | Empty Next.js scaffold, not a git repo |
+
+## Archived (old monorepo remnants)
+| Directory | Archived To | Reason |
+|-----------|-------------|--------|
+| apps/ | _archive/monorepo-apps/ | Old monorepo remnant, superseded by q-grid-platform/apps/ |
+| packages/ | _archive/monorepo-packages/ | Old monorepo remnant (includes @taurus/agent-handoff v1.0.0), superseded by q-grid-platform/packages/ |
 
 ## Parked (future projects — will resume)
 | Directory | Reason | Resume When |
 |-----------|--------|-------------|
+| Obidien.taurusai.io/ | Phase 0, Pi 5 project | TBD |
+| OpsFlow.Taurusai.io/ | Phase 2 of 7, paused | After Comply ships |
+| OBD2-Ai-Diagnostic/ | Phase 0, vehicle diagnostics | TBD |
 
 ## Consolidated
 | From | To | Reason |
 |------|-----|--------|
+| emails/ | grants/emails/ | Single file, logically belongs with grants |
+| genmedia-mcp-bridge/ | gemini-integration/ | Single file, same system |
+| Q-GRID-ECOSYSTEM/ | docs/architecture/ | Architecture docs belong in docs/ |
+| tooling/ | _archive/tooling/ | Stale scripts |
