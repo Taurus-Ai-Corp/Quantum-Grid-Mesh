@@ -1,4 +1,4 @@
-import { bigint, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { bigint, integer, pgTable, real, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 export const auditTrail = pgTable('audit_trail', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -13,4 +13,12 @@ export const auditTrail = pgTable('audit_trail', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
   // PQC column
   pqcSignature: text('pqc_signature'),
+
+  // OBSERVE trace columns (nullable — non-LLM audit records don't use these)
+  model: text('model'),
+  tokensIn: integer('tokens_in'),
+  tokensOut: integer('tokens_out'),
+  costUsd: real('cost_usd'),
+  latencyMs: integer('latency_ms'),
+  guardVerdict: text('guard_verdict'),  // 'pass' | 'block' | 'warn'
 })
