@@ -255,7 +255,7 @@ Your reports:
 - Are written in formal British English`
 }
 
-function buildUserPrompt(input: ReportInput): string {
+export function buildUserPrompt(input: ReportInput): string {
   const { system, assessment, scoringResult } = input
   const { score, riskLevel, categoryScores, recommendations, keyFindings } = scoringResult
 

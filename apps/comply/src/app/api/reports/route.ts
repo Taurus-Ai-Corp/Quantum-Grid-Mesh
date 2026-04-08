@@ -8,7 +8,8 @@ import { assessmentsStore } from '@/lib/assessment-store'
 import { systemsStore } from '@/lib/systems-store'
 import { reportsStore } from '@/lib/report-store'
 import { scoreAssessment } from '@/lib/assessment-scorer'
-import { generateReport } from '@/lib/report-generator'
+import { generateReport, buildUserPrompt } from '@/lib/report-generator'
+import { aiGuard } from '@/lib/ai-guard'
 import { createStamp } from '@taurus/pqc-crypto'
 import { logAuditEvent } from '@/lib/audit-logger'
 import { createReportSchema } from '@/lib/validation'
@@ -112,10 +113,33 @@ export async function POST(req: Request) {
       const cloudBaseUrl = process.env['REPORT_AI_BASE_URL']
       const cloudModel = process.env['REPORT_AI_MODEL']
 
-      const content = await generateReport(
-        { system, assessment, scoringResult, jurisdiction: system.jurisdiction ?? 'eu', reportId },
-        { mode, cloudApiKey, cloudBaseUrl, cloudModel, sovereignEndpoint, sovereignModel },
-      )
+      const reportInput = { system, assessment, scoringResult, jurisdiction: system.jurisdiction ?? 'eu', reportId }
+      const reportConfig = { mode, cloudApiKey, cloudBaseUrl, cloudModel, sovereignEndpoint, sovereignModel }
+      const usesLLM = (mode === 'cloud' || mode === 'sovereign') && (cloudApiKey || sovereignEndpoint)
+
+      let content: string
+
+      if (usesLLM) {
+        // Guard wraps the LLM call — validates input prompt and output content
+        const guardResult = await aiGuard.execute({
+          prompt: buildUserPrompt(reportInput),
+          llmCall: async () => generateReport(reportInput, reportConfig),
+          jurisdiction: system.jurisdiction ?? 'eu',
+          model: mode === 'sovereign' ? (sovereignModel ?? 'mistral:7b') : (cloudModel ?? 'gpt-4o-mini'),
+        })
+
+        if (guardResult.blocked) {
+          return NextResponse.json(
+            { error: 'Guard blocked', reason: guardResult.blockReason },
+            { status: 422 },
+          )
+        }
+
+        content = guardResult.response!
+      } else {
+        // Template mode — no LLM call, no guard needed
+        content = await generateReport(reportInput, reportConfig)
+      }
 
       let pqcHash: string | undefined
       let pqcSignature: string | undefined
@@ -246,16 +270,39 @@ export async function POST(req: Request) {
     const cloudBaseUrl = process.env['REPORT_AI_BASE_URL']
     const cloudModel = process.env['REPORT_AI_MODEL']
 
-    const content = await generateReport(
-      {
-        system: systemForReport,
-        assessment: assessmentForReport,
-        scoringResult,
+    const dbReportInput = {
+      system: systemForReport,
+      assessment: assessmentForReport,
+      scoringResult,
+      jurisdiction: systemRow.jurisdiction ?? 'eu',
+      reportId,
+    }
+    const dbReportConfig = { mode, cloudApiKey, cloudBaseUrl, cloudModel, sovereignEndpoint, sovereignModel }
+    const dbUsesLLM = (mode === 'cloud' || mode === 'sovereign') && (cloudApiKey || sovereignEndpoint)
+
+    let content: string
+
+    if (dbUsesLLM) {
+      // Guard wraps the LLM call — validates input prompt and output content
+      const guardResult = await aiGuard.execute({
+        prompt: buildUserPrompt(dbReportInput),
+        llmCall: async () => generateReport(dbReportInput, dbReportConfig),
         jurisdiction: systemRow.jurisdiction ?? 'eu',
-        reportId,
-      },
-      { mode, cloudApiKey, cloudBaseUrl, cloudModel, sovereignEndpoint, sovereignModel },
-    )
+        model: mode === 'sovereign' ? (sovereignModel ?? 'mistral:7b') : (cloudModel ?? 'gpt-4o-mini'),
+      })
+
+      if (guardResult.blocked) {
+        return NextResponse.json(
+          { error: 'Guard blocked', reason: guardResult.blockReason },
+          { status: 422 },
+        )
+      }
+
+      content = guardResult.response!
+    } else {
+      // Template mode — no LLM call, no guard needed
+      content = await generateReport(dbReportInput, dbReportConfig)
+    }
 
     let pqcHash: string | undefined
     let pqcSignature: string | undefined
