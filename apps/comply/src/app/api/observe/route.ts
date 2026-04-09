@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
-  const _jurisdiction = searchParams.get('jurisdiction') ?? process.env['JURISDICTION'] ?? 'eu'
+  const jurisdiction = searchParams.get('jurisdiction') ?? process.env['JURISDICTION'] ?? 'eu'
   const days = parseInt(searchParams.get('days') ?? '30', 10)
 
   // Try to get DB — if unavailable, return zeros
@@ -35,6 +35,10 @@ export async function GET(req: Request) {
 
   const since = new Date()
   since.setDate(since.getDate() - days)
+
+  // Each region has its own database, so jurisdiction filtering happens at infra level.
+  // The jurisdiction param is kept for future single-DB multi-tenant mode.
+  void jurisdiction
 
   const rows = await db
     .select({

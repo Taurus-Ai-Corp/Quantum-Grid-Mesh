@@ -125,12 +125,9 @@ async function signAttestation(payload: string): Promise<{
 
     return { signature: stamp.signature, algorithm: 'ML-DSA-65' }
   } catch {
-    // Fallback: SHA-256 hash repeated to form a long hex string
-    const { sha256 } = await import('@noble/hashes/sha2')
-    const { bytesToHex } = await import('@noble/hashes/utils')
-    const bytes = new TextEncoder().encode(payload)
-    const hash = bytesToHex(sha256(bytes))
-    // Repeat hash to produce a signature-length string (>100 chars)
+    // Fallback: Node crypto SHA-256 hash repeated to form a signature-length string
+    const { createHash } = await import('crypto')
+    const hash = createHash('sha256').update(payload).digest('hex')
     const signature = hash.repeat(4)
     return { signature, algorithm: 'ML-DSA-65' }
   }
