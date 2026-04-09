@@ -4,7 +4,7 @@ export const naConfig: JurisdictionConfig = {
   id: 'na',
   name: 'North America',
   shortName: 'NA',
-  domain: 'comply.q-grid.net',
+  domain: 'na.q-grid.net',
   currency: { code: 'CAD', symbol: '$', locale: 'en-CA' },
   regulations: [
     {

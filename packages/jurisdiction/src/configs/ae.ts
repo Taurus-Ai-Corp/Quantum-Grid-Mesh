@@ -4,7 +4,7 @@ export const aeConfig: JurisdictionConfig = {
   id: 'ae',
   name: 'United Arab Emirates',
   shortName: 'AE',
-  domain: 'comply.q-grid.ae',
+  domain: 'ae.q-grid.net',
   currency: { code: 'AED', symbol: 'د.إ', locale: 'en-AE' },
   regulations: [
     {

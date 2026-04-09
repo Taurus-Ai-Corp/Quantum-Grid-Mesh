@@ -4,7 +4,7 @@ export const inConfig: JurisdictionConfig = {
   id: 'in',
   name: 'India',
   shortName: 'IN',
-  domain: 'comply.q-grid.in',
+  domain: 'in.q-grid.net',
   currency: { code: 'INR', symbol: '₹', locale: 'en-IN' },
   regulations: [
     {

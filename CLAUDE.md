@@ -13,7 +13,7 @@ pnpm test                     # Run all tests
 
 ## Architecture
 
-- **2 apps**: `apps/landing` (q-grid.net, dark), `apps/comply` (comply.q-grid.{eu|net|in|ae}, light)
+- **2 apps**: `apps/landing` (q-grid.net, dark), `apps/comply` ({eu|na|in|ae}.q-grid.net, light)
 - **7 packages**: pqc-crypto, pqc-engine, jurisdiction, db, hedera, ui, tsconfig
 - Same comply codebase deployed 4x with different `JURISDICTION` env var
 - Spec: `docs/superpowers/specs/2026-03-25-q-grid-platform-design.md`

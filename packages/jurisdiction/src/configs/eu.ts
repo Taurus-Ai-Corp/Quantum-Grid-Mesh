@@ -4,7 +4,7 @@ export const euConfig: JurisdictionConfig = {
   id: 'eu',
   name: 'European Union',
   shortName: 'EU',
-  domain: 'comply.q-grid.eu',
+  domain: 'eu.q-grid.net',
   currency: { code: 'EUR', symbol: '€', locale: 'en-EU' },
   regulations: [
     {
