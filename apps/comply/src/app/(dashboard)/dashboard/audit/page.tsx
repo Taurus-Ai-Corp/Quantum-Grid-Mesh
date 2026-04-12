@@ -90,7 +90,7 @@ function HederaBadge({ status, txId }: { status: AuditEvent['hederaStatus']; txI
     )
   }
   return (
-    <span className="inline-flex items-center gap-1 text-xs font-medium text-[var(--graphite-light)] bg-[var(--graphite-whisper)] px-2 py-0.5 rounded-full">
+    <span className="inline-flex items-center gap-1 text-xs font-medium text-graphite-light bg-graphite-whisper px-2 py-0.5 rounded-full">
       <ShieldOff className="h-3 w-3" />
       No HCS
     </span>
@@ -155,10 +155,10 @@ export default function AuditPage() {
       {/* Header */}
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
-          <h1 className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)] mb-1">
+          <h1 className="font-heading text-2xl font-bold text-graphite mb-1">
             Audit Trail
           </h1>
-          <p className="text-sm text-[var(--graphite-med)]">
+          <p className="text-sm text-graphite-med">
             PQC-signed events anchored to Hedera Hashgraph (HCS)
           </p>
         </div>
@@ -167,7 +167,7 @@ export default function AuditPage() {
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value as FilterType)}
-          className="h-9 px-3 text-sm border border-[var(--graphite-ghost)] rounded-[var(--radius)] bg-white text-[var(--graphite)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
+          className="h-9 px-3 text-sm border border-graphite-ghost rounded-brand bg-white text-graphite focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
         >
           {FILTER_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -179,17 +179,17 @@ export default function AuditPage() {
 
       {/* Timeline */}
       {loading ? (
-        <div className="flex items-center justify-center py-24 text-[var(--graphite-light)]">
+        <div className="flex items-center justify-center py-24 text-graphite-light">
           <Loader2 className="h-6 w-6 animate-spin mr-2" />
           <span className="text-sm">Loading audit events…</span>
         </div>
       ) : events.length === 0 ? (
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-12 text-center max-w-md mx-auto mt-8">
-          <div className="w-12 h-12 rounded-lg bg-[var(--accent-light)] flex items-center justify-center mx-auto mb-4">
-            <History className="h-6 w-6 text-[var(--accent)]" />
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-12 text-center max-w-md mx-auto mt-8">
+          <div className="w-12 h-12 rounded-lg bg-accent-light flex items-center justify-center mx-auto mb-4">
+            <History className="h-6 w-6 text-accent" />
           </div>
-          <h2 className="font-semibold text-[var(--graphite)] mb-2">No events yet</h2>
-          <p className="text-sm text-[var(--graphite-med)]">
+          <h2 className="font-semibold text-graphite mb-2">No events yet</h2>
+          <p className="text-sm text-graphite-med">
             Audit events will appear here when you register systems, complete assessments, or
             generate reports.
           </p>
@@ -197,7 +197,7 @@ export default function AuditPage() {
       ) : (
         <div className="relative">
           {/* Vertical timeline line */}
-          <div className="absolute left-5 top-0 bottom-0 w-px bg-[var(--graphite-ghost)]" />
+          <div className="absolute left-5 top-0 bottom-0 w-px bg-graphite-ghost" />
 
           <ul className="space-y-4">
             {events.map((event) => {
@@ -214,7 +214,7 @@ export default function AuditPage() {
                   </div>
 
                   {/* Card */}
-                  <div className="flex-1 bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-4 min-w-0">
+                  <div className="flex-1 bg-white rounded-brand border border-graphite-ghost shadow-sm p-4 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-2">
                       <div className="min-w-0">
                         <span
@@ -222,16 +222,16 @@ export default function AuditPage() {
                         >
                           {cfg.label}
                         </span>
-                        <span className="text-sm font-medium text-[var(--graphite)] capitalize">
+                        <span className="text-sm font-medium text-graphite capitalize">
                           {event.action}
                         </span>
                       </div>
-                      <span className="text-xs text-[var(--graphite-light)] shrink-0 tabular-nums">
+                      <span className="text-xs text-graphite-light shrink-0 tabular-nums">
                         {relativeTime(event.createdAt)}
                       </span>
                     </div>
 
-                    <p className="text-sm text-[var(--graphite-med)] mb-3 leading-relaxed">
+                    <p className="text-sm text-graphite-med mb-3 leading-relaxed">
                       {event.details}
                     </p>
 
@@ -241,7 +241,7 @@ export default function AuditPage() {
                     </div>
 
                     {event.pqcHash && (
-                      <p className="mt-2 text-xs font-mono text-[var(--graphite-light)] truncate">
+                      <p className="mt-2 text-xs font-mono text-graphite-light truncate">
                         hash: {event.pqcHash.slice(0, 32)}…
                       </p>
                     )}

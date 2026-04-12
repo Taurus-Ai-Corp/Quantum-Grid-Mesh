@@ -52,10 +52,10 @@ export function PricingCTA({ plan, featured, label }: PricingCTAProps) {
     <button
       onClick={() => void handleClick()}
       disabled={loading}
-      className={`inline-flex items-center justify-center gap-2 h-11 px-6 text-sm font-semibold rounded-[var(--radius)] transition-colors disabled:opacity-50 ${
+      className={`inline-flex items-center justify-center gap-2 h-11 px-6 text-sm font-semibold rounded-brand transition-colors disabled:opacity-50 ${
         featured
-          ? 'bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)]'
-          : 'border border-[var(--graphite-ghost)] text-[var(--graphite)] hover:bg-[var(--graphite-whisper)]'
+          ? 'bg-accent text-white hover:bg-accent-dark'
+          : 'border border-graphite-ghost text-graphite hover:bg-graphite-whisper'
       }`}
     >
       {loading ? 'Loading…' : label}

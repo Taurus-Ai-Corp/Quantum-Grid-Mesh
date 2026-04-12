@@ -1,4 +1,4 @@
-import { Client, PrivateKey } from '@hashgraph/sdk'
+import { Client, PrivateKey } from '@hiero-ledger/sdk'
 import type { HederaConfig } from './config.js'
 
 export function createHederaClient(config: HederaConfig): Client {

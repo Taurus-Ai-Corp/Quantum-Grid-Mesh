@@ -129,10 +129,10 @@ export default function OnboardingPage() {
     <div>
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)]">
+        <h1 className="font-heading text-2xl font-bold text-graphite">
           Welcome to GRIDERA Comply
         </h1>
-        <p className="text-sm text-[var(--graphite-med)] mt-1">
+        <p className="text-sm text-graphite-med mt-1">
           Let&apos;s set up your compliance workspace in a few steps.
         </p>
       </div>
@@ -148,16 +148,16 @@ export default function OnboardingPage() {
               <div
                 className={cn(
                   'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors',
-                  isActive && 'bg-[var(--accent)] text-white',
-                  isDone && 'bg-[var(--accent-light)] text-[var(--accent)]',
-                  !isActive && !isDone && 'bg-[var(--graphite-whisper)] text-[var(--graphite-light)]',
+                  isActive && 'bg-accent text-white',
+                  isDone && 'bg-accent-light text-accent',
+                  !isActive && !isDone && 'bg-graphite-whisper text-graphite-light',
                 )}
               >
                 {isDone ? <Check className="h-3 w-3" /> : <Icon className="h-3 w-3" />}
                 <span className="hidden sm:inline">{s.label}</span>
               </div>
               {s.id < 4 && (
-                <ChevronRight className={cn('h-3 w-3', s.id < step ? 'text-[var(--accent)]' : 'text-[var(--graphite-faint)]')} />
+                <ChevronRight className={cn('h-3 w-3', s.id < step ? 'text-accent' : 'text-graphite-faint')} />
               )}
             </div>
           )
@@ -165,17 +165,17 @@ export default function OnboardingPage() {
       </div>
 
       {/* Step content */}
-      <div className="rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white p-6 space-y-5">
+      <div className="rounded-brand border border-graphite-ghost bg-white p-6 space-y-5">
         {step === 1 && (
           <>
             <div>
-              <h2 className="font-[var(--font-heading)] font-semibold text-[var(--graphite)] mb-1">Create Your Organization</h2>
-              <p className="text-xs text-[var(--graphite-med)]">This is your company or team that will manage AI compliance.</p>
+              <h2 className="font-heading font-semibold text-graphite mb-1">Create Your Organization</h2>
+              <p className="text-xs text-graphite-med">This is your company or team that will manage AI compliance.</p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--graphite-light)] mb-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-graphite-light mb-1.5">
                   Organization Name
                 </label>
                 <input
@@ -183,19 +183,19 @@ export default function OnboardingPage() {
                   value={org.name}
                   onChange={(e) => setOrg({ ...org, name: e.target.value })}
                   placeholder="Acme Corp"
-                  className="w-full h-10 px-3 text-sm border border-[var(--graphite-ghost)] rounded-[var(--radius)] bg-white text-[var(--graphite)] placeholder:text-[var(--graphite-faint)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
+                  className="w-full h-10 px-3 text-sm border border-graphite-ghost rounded-brand bg-white text-graphite placeholder:text-graphite-faint focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                   autoFocus
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--graphite-light)] mb-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-graphite-light mb-1.5">
                   Industry
                 </label>
                 <select
                   value={org.industry}
                   onChange={(e) => setOrg({ ...org, industry: e.target.value })}
-                  className="w-full h-10 px-3 text-sm border border-[var(--graphite-ghost)] rounded-[var(--radius)] bg-white text-[var(--graphite)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
+                  className="w-full h-10 px-3 text-sm border border-graphite-ghost rounded-brand bg-white text-graphite focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                 >
                   {INDUSTRIES.map((i) => (
                     <option key={i.value} value={i.value}>{i.label}</option>
@@ -204,13 +204,13 @@ export default function OnboardingPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--graphite-light)] mb-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-graphite-light mb-1.5">
                   Company Size
                 </label>
                 <select
                   value={org.size}
                   onChange={(e) => setOrg({ ...org, size: e.target.value })}
-                  className="w-full h-10 px-3 text-sm border border-[var(--graphite-ghost)] rounded-[var(--radius)] bg-white text-[var(--graphite)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
+                  className="w-full h-10 px-3 text-sm border border-graphite-ghost rounded-brand bg-white text-graphite focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                 >
                   {ORG_SIZES.map((s) => (
                     <option key={s.value} value={s.value}>{s.label}</option>
@@ -224,14 +224,14 @@ export default function OnboardingPage() {
         {step === 2 && (
           <>
             <div>
-              <h2 className="font-[var(--font-heading)] font-semibold text-[var(--graphite)] mb-1">Invite Your Team</h2>
-              <p className="text-xs text-[var(--graphite-med)]">Add team members to collaborate on compliance. You can skip this and invite later.</p>
+              <h2 className="font-heading font-semibold text-graphite mb-1">Invite Your Team</h2>
+              <p className="text-xs text-graphite-med">Add team members to collaborate on compliance. You can skip this and invite later.</p>
             </div>
 
-            <div className="rounded-[var(--radius)] border border-dashed border-[var(--graphite-ghost)] p-8 text-center">
-              <Users className="h-8 w-8 text-[var(--graphite-faint)] mx-auto mb-3" />
-              <p className="text-sm text-[var(--graphite-med)] mb-1">Team invites coming soon</p>
-              <p className="text-xs text-[var(--graphite-light)]">
+            <div className="rounded-brand border border-dashed border-graphite-ghost p-8 text-center">
+              <Users className="h-8 w-8 text-graphite-faint mx-auto mb-3" />
+              <p className="text-sm text-graphite-med mb-1">Team invites coming soon</p>
+              <p className="text-xs text-graphite-light">
                 You&apos;ll be able to invite CISOs, CTOs, and auditors with role-based access.
                 For now, continue as the primary admin.
               </p>
@@ -240,13 +240,13 @@ export default function OnboardingPage() {
             {!teamSkipped && (
               <button
                 onClick={() => setTeamSkipped(true)}
-                className="text-xs text-[var(--accent)] hover:underline"
+                className="text-xs text-accent hover:underline"
               >
                 Skip for now — I&apos;ll invite my team later
               </button>
             )}
             {teamSkipped && (
-              <p className="text-xs text-[var(--graphite-light)] flex items-center gap-1">
+              <p className="text-xs text-graphite-light flex items-center gap-1">
                 <Check className="h-3 w-3 text-green-600" />
                 Skipped — you can invite team members anytime from Settings.
               </p>
@@ -257,8 +257,8 @@ export default function OnboardingPage() {
         {step === 3 && (
           <>
             <div>
-              <h2 className="font-[var(--font-heading)] font-semibold text-[var(--graphite)] mb-1">Select Compliance Framework</h2>
-              <p className="text-xs text-[var(--graphite-med)]">Choose the primary regulatory framework for your assessments.</p>
+              <h2 className="font-heading font-semibold text-graphite mb-1">Select Compliance Framework</h2>
+              <p className="text-xs text-graphite-med">Choose the primary regulatory framework for your assessments.</p>
             </div>
 
             <div className="space-y-2">
@@ -266,10 +266,10 @@ export default function OnboardingPage() {
                 <label
                   key={fw.value}
                   className={cn(
-                    'flex items-start gap-3 p-3 rounded-[var(--radius)] border cursor-pointer transition-colors',
+                    'flex items-start gap-3 p-3 rounded-brand border cursor-pointer transition-colors',
                     framework === fw.value
-                      ? 'border-[var(--accent)] bg-[var(--accent-light)]'
-                      : 'border-[var(--graphite-ghost)] hover:border-[var(--graphite-light)]',
+                      ? 'border-accent bg-accent-light'
+                      : 'border-graphite-ghost hover:border-graphite-light',
                   )}
                 >
                   <input
@@ -278,11 +278,11 @@ export default function OnboardingPage() {
                     value={fw.value}
                     checked={framework === fw.value}
                     onChange={(e) => setFramework(e.target.value)}
-                    className="mt-0.5 accent-[var(--accent)]"
+                    className="mt-0.5 accent-accent"
                   />
                   <div>
-                    <p className="text-sm font-medium text-[var(--graphite)]">{fw.label}</p>
-                    <p className="text-xs text-[var(--graphite-med)] mt-0.5">{fw.description}</p>
+                    <p className="text-sm font-medium text-graphite">{fw.label}</p>
+                    <p className="text-xs text-graphite-med mt-0.5">{fw.description}</p>
                   </div>
                 </label>
               ))}
@@ -293,13 +293,13 @@ export default function OnboardingPage() {
         {step === 4 && (
           <>
             <div>
-              <h2 className="font-[var(--font-heading)] font-semibold text-[var(--graphite)] mb-1">Register Your First AI System</h2>
-              <p className="text-xs text-[var(--graphite-med)]">Add an AI system to begin your compliance assessment.</p>
+              <h2 className="font-heading font-semibold text-graphite mb-1">Register Your First AI System</h2>
+              <p className="text-xs text-graphite-med">Add an AI system to begin your compliance assessment.</p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--graphite-light)] mb-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-graphite-light mb-1.5">
                   System Name
                 </label>
                 <input
@@ -307,13 +307,13 @@ export default function OnboardingPage() {
                   value={system.name}
                   onChange={(e) => setSystem({ ...system, name: e.target.value })}
                   placeholder="Customer Support Chatbot"
-                  className="w-full h-10 px-3 text-sm border border-[var(--graphite-ghost)] rounded-[var(--radius)] bg-white text-[var(--graphite)] placeholder:text-[var(--graphite-faint)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
+                  className="w-full h-10 px-3 text-sm border border-graphite-ghost rounded-brand bg-white text-graphite placeholder:text-graphite-faint focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
                   autoFocus
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--graphite-light)] mb-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-graphite-light mb-1.5">
                   Description
                 </label>
                 <textarea
@@ -321,12 +321,12 @@ export default function OnboardingPage() {
                   onChange={(e) => setSystem({ ...system, description: e.target.value })}
                   placeholder="What does this AI system do? What data does it process?"
                   rows={3}
-                  className="w-full px-3 py-2 text-sm border border-[var(--graphite-ghost)] rounded-[var(--radius)] bg-white text-[var(--graphite)] placeholder:text-[var(--graphite-faint)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent resize-none"
+                  className="w-full px-3 py-2 text-sm border border-graphite-ghost rounded-brand bg-white text-graphite placeholder:text-graphite-faint focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--graphite-light)] mb-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-graphite-light mb-1.5">
                   Autonomy Level
                 </label>
                 <div className="space-y-2">
@@ -334,10 +334,10 @@ export default function OnboardingPage() {
                     <label
                       key={level.value}
                       className={cn(
-                        'flex items-start gap-3 p-3 rounded-[var(--radius)] border cursor-pointer transition-colors',
+                        'flex items-start gap-3 p-3 rounded-brand border cursor-pointer transition-colors',
                         system.autonomyLevel === level.value
-                          ? 'border-[var(--accent)] bg-[var(--accent-light)]'
-                          : 'border-[var(--graphite-ghost)] hover:border-[var(--graphite-light)]',
+                          ? 'border-accent bg-accent-light'
+                          : 'border-graphite-ghost hover:border-graphite-light',
                       )}
                     >
                       <input
@@ -346,11 +346,11 @@ export default function OnboardingPage() {
                         value={level.value}
                         checked={system.autonomyLevel === level.value}
                         onChange={(e) => setSystem({ ...system, autonomyLevel: e.target.value })}
-                        className="mt-0.5 accent-[var(--accent)]"
+                        className="mt-0.5 accent-accent"
                       />
                       <div>
-                        <p className="text-sm font-medium text-[var(--graphite)]">{level.label}</p>
-                        <p className="text-xs text-[var(--graphite-med)] mt-0.5">{level.description}</p>
+                        <p className="text-sm font-medium text-graphite">{level.label}</p>
+                        <p className="text-xs text-graphite-med mt-0.5">{level.description}</p>
                       </div>
                     </label>
                   ))}
@@ -361,7 +361,7 @@ export default function OnboardingPage() {
         )}
 
         {error && (
-          <p className="text-xs text-red-600 bg-red-50 rounded-[var(--radius)] px-3 py-2">{error}</p>
+          <p className="text-xs text-red-600 bg-red-50 rounded-brand px-3 py-2">{error}</p>
         )}
       </div>
 
@@ -370,7 +370,7 @@ export default function OnboardingPage() {
         <button
           onClick={() => setStep((step - 1) as Step)}
           disabled={step === 1}
-          className="inline-flex items-center gap-1.5 h-9 px-4 text-sm font-medium border border-[var(--graphite-ghost)] rounded-[var(--radius)] text-[var(--graphite)] hover:bg-white transition-colors disabled:opacity-30 disabled:pointer-events-none"
+          className="inline-flex items-center gap-1.5 h-9 px-4 text-sm font-medium border border-graphite-ghost rounded-brand text-graphite hover:bg-white transition-colors disabled:opacity-30 disabled:pointer-events-none"
         >
           <ChevronLeft className="h-4 w-4" />
           Back
@@ -380,7 +380,7 @@ export default function OnboardingPage() {
           <button
             onClick={() => setStep((step + 1) as Step)}
             disabled={!canProceed()}
-            className="inline-flex items-center gap-1.5 h-9 px-5 text-sm font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)] transition-colors disabled:opacity-50 disabled:pointer-events-none"
+            className="inline-flex items-center gap-1.5 h-9 px-5 text-sm font-semibold rounded-brand bg-accent text-white hover:bg-accent-dark transition-colors disabled:opacity-50 disabled:pointer-events-none"
           >
             Continue
             <ChevronRight className="h-4 w-4" />
@@ -389,7 +389,7 @@ export default function OnboardingPage() {
           <button
             onClick={() => void handleComplete()}
             disabled={!canProceed() || saving}
-            className="inline-flex items-center gap-1.5 h-9 px-5 text-sm font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-white hover:bg-[var(--accent-dark)] transition-colors disabled:opacity-50 disabled:pointer-events-none"
+            className="inline-flex items-center gap-1.5 h-9 px-5 text-sm font-semibold rounded-brand bg-accent text-white hover:bg-accent-dark transition-colors disabled:opacity-50 disabled:pointer-events-none"
           >
             {saving ? (
               <>

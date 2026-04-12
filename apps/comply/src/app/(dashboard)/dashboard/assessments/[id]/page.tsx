@@ -146,14 +146,14 @@ export default function AssessmentWizardPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <Loader2 className="h-6 w-6 animate-spin text-[var(--accent)]" />
+        <Loader2 className="h-6 w-6 animate-spin text-accent" />
       </div>
     )
   }
 
   if (error && !assessment) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-[var(--radius)] p-6 text-sm text-red-700 max-w-lg">
+      <div className="bg-red-50 border border-red-200 rounded-brand p-6 text-sm text-red-700 max-w-lg">
         {error}
       </div>
     )
@@ -167,21 +167,21 @@ export default function AssessmentWizardPage() {
     <div>
       {/* Page header */}
       <div className="mb-6">
-        <h1 className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)] mb-1">
+        <h1 className="font-heading text-2xl font-bold text-graphite mb-1">
           EU AI Act Conformity Assessment
         </h1>
         {assessment && (
-          <p className="text-sm text-[var(--graphite-med)]">
-            System: <span className="font-medium text-[var(--graphite)]">{assessment.systemName}</span>
+          <p className="text-sm text-graphite-med">
+            System: <span className="font-medium text-graphite">{assessment.systemName}</span>
           </p>
         )}
       </div>
 
       <div className="flex gap-6 items-start">
         {/* Left sidebar */}
-        <aside className="w-[220px] shrink-0 bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm overflow-hidden">
-          <div className="px-3 py-3 border-b border-[var(--graphite-ghost)]">
-            <p className="text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">
+        <aside className="w-[220px] shrink-0 bg-white rounded-brand border border-graphite-ghost shadow-sm overflow-hidden">
+          <div className="px-3 py-3 border-b border-graphite-ghost">
+            <p className="text-xs font-semibold text-graphite-light uppercase tracking-wide">
               Sections
             </p>
           </div>
@@ -196,10 +196,10 @@ export default function AssessmentWizardPage() {
                 <button
                   key={sec.id}
                   onClick={() => handleNavigate(idx)}
-                  className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-[var(--radius)] text-left mb-0.5 text-sm transition-colors ${
+                  className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-brand text-left mb-0.5 text-sm transition-colors ${
                     isCurrent
-                      ? 'bg-[var(--accent-light)] text-[var(--accent)] font-medium'
-                      : 'text-[var(--graphite-med)] hover:bg-[var(--bone)] hover:text-[var(--graphite)]'
+                      ? 'bg-accent-light text-accent font-medium'
+                      : 'text-graphite-med hover:bg-bone hover:text-graphite'
                   }`}
                 >
                   <div className="relative shrink-0">
@@ -217,21 +217,21 @@ export default function AssessmentWizardPage() {
           </nav>
 
           {/* Progress */}
-          <div className="px-4 py-4 border-t border-[var(--graphite-ghost)]">
+          <div className="px-4 py-4 border-t border-graphite-ghost">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs text-[var(--graphite-light)]">Progress</span>
-              <span className="text-xs font-semibold text-[var(--graphite)]">
+              <span className="text-xs text-graphite-light">Progress</span>
+              <span className="text-xs font-semibold text-graphite">
                 {completedSections}/{totalSections}
               </span>
             </div>
             <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden">
               <div
-                className="h-full rounded-full bg-[var(--accent)] transition-all duration-300"
+                className="h-full rounded-full bg-accent transition-all duration-300"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
             {saving && (
-              <p className="text-xs text-[var(--graphite-light)] mt-2 flex items-center gap-1">
+              <p className="text-xs text-graphite-light mt-2 flex items-center gap-1">
                 <Loader2 className="h-3 w-3 animate-spin" />
                 Saving…
               </p>
@@ -242,21 +242,21 @@ export default function AssessmentWizardPage() {
         {/* Main question area */}
         <div className="flex-1 min-w-0">
           {/* Section header */}
-          <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6 mb-4">
+          <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6 mb-4">
             <div className="flex items-center gap-3 mb-1">
-              <div className="w-9 h-9 rounded-lg bg-[var(--accent-light)] flex items-center justify-center shrink-0">
-                <SectionIcon className="h-5 w-5 text-[var(--accent)]" />
+              <div className="w-9 h-9 rounded-lg bg-accent-light flex items-center justify-center shrink-0">
+                <SectionIcon className="h-5 w-5 text-accent" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="font-[var(--font-heading)] text-lg font-semibold text-[var(--graphite)]">
+                  <h2 className="font-heading text-lg font-semibold text-graphite">
                     {section.title}
                   </h2>
-                  <span className="text-xs text-[var(--graphite-faint)] font-mono">
+                  <span className="text-xs text-graphite-faint font-mono">
                     {currentSection + 1}/{totalSections}
                   </span>
                 </div>
-                <p className="text-sm text-[var(--graphite-med)]">{section.description}</p>
+                <p className="text-sm text-graphite-med">{section.description}</p>
               </div>
             </div>
           </div>
@@ -266,17 +266,17 @@ export default function AssessmentWizardPage() {
             {section.questions.map((question, qIdx) => (
               <div
                 key={question.id}
-                className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6"
+                className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6"
               >
                 <div className="mb-3">
-                  <label className="block text-sm font-medium text-[var(--graphite)] mb-0.5">
-                    <span className="text-[var(--graphite-faint)] font-mono mr-2 text-xs">
+                  <label className="block text-sm font-medium text-graphite mb-0.5">
+                    <span className="text-graphite-faint font-mono mr-2 text-xs">
                       {qIdx + 1}.
                     </span>
                     {question.label}
                   </label>
                   {question.helpText && (
-                    <p className="text-xs text-[var(--graphite-light)] mt-0.5">{question.helpText}</p>
+                    <p className="text-xs text-graphite-light mt-0.5">{question.helpText}</p>
                   )}
                 </div>
 
@@ -286,7 +286,7 @@ export default function AssessmentWizardPage() {
                     onChange={(e) => handleTextChange(question.id, e.target.value)}
                     rows={3}
                     placeholder="Enter your response…"
-                    className="w-full px-3 py-2.5 text-sm rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white text-[var(--graphite)] placeholder:text-[var(--graphite-faint)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition resize-none"
+                    className="w-full px-3 py-2.5 text-sm rounded-brand border border-graphite-ghost bg-white text-graphite placeholder:text-graphite-faint focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition resize-none"
                   />
                 )}
 
@@ -299,10 +299,10 @@ export default function AssessmentWizardPage() {
                           key={String(val)}
                           type="button"
                           onClick={() => handleBooleanChange(question.id, val)}
-                          className={`flex-1 h-12 rounded-[var(--radius)] border-2 text-sm font-semibold transition-all ${
+                          className={`flex-1 h-12 rounded-brand border-2 text-sm font-semibold transition-all ${
                             isSelected
-                              ? 'border-[var(--accent)] bg-[var(--accent)] text-white shadow-sm'
-                              : 'border-[var(--graphite-ghost)] bg-white text-[var(--graphite-med)] hover:border-[var(--accent)] hover:text-[var(--accent)]'
+                              ? 'border-accent bg-accent text-white shadow-sm'
+                              : 'border-graphite-ghost bg-white text-graphite-med hover:border-accent hover:text-accent'
                           }`}
                         >
                           {val ? 'Yes' : 'No'}
@@ -319,10 +319,10 @@ export default function AssessmentWizardPage() {
                       return (
                         <label
                           key={opt}
-                          className={`flex items-center gap-3 px-4 py-3 rounded-[var(--radius)] border cursor-pointer transition-colors ${
+                          className={`flex items-center gap-3 px-4 py-3 rounded-brand border cursor-pointer transition-colors ${
                             isSelected
-                              ? 'border-[var(--accent)] bg-[var(--accent-light)]'
-                              : 'border-[var(--graphite-ghost)] hover:border-[var(--accent)] hover:bg-[var(--bone)]'
+                              ? 'border-accent bg-accent-light'
+                              : 'border-graphite-ghost hover:border-accent hover:bg-bone'
                           }`}
                         >
                           <input
@@ -331,9 +331,9 @@ export default function AssessmentWizardPage() {
                             value={opt}
                             checked={isSelected}
                             onChange={() => handleTextChange(question.id, opt)}
-                            className="accent-[var(--accent)]"
+                            className="accent-accent"
                           />
-                          <span className="text-sm text-[var(--graphite)]">{opt}</span>
+                          <span className="text-sm text-graphite">{opt}</span>
                         </label>
                       )
                     })}
@@ -345,7 +345,7 @@ export default function AssessmentWizardPage() {
 
           {/* Error */}
           {error && (
-            <div className="mt-4 bg-red-50 border border-red-200 rounded-[var(--radius)] px-4 py-3 text-sm text-red-700">
+            <div className="mt-4 bg-red-50 border border-red-200 rounded-brand px-4 py-3 text-sm text-red-700">
               {error}
             </div>
           )}
@@ -355,7 +355,7 @@ export default function AssessmentWizardPage() {
             <button
               onClick={() => handleNavigate(currentSection - 1)}
               disabled={isFirst}
-              className="inline-flex items-center gap-2 h-10 px-4 text-sm font-medium text-[var(--graphite-med)] border border-[var(--graphite-ghost)] rounded-[var(--radius)] hover:text-[var(--graphite)] hover:border-[var(--graphite-med)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors bg-white"
+              className="inline-flex items-center gap-2 h-10 px-4 text-sm font-medium text-graphite-med border border-graphite-ghost rounded-brand hover:text-graphite hover:border-graphite-med disabled:opacity-40 disabled:cursor-not-allowed transition-colors bg-white"
             >
               <ChevronLeft className="h-4 w-4" />
               Previous
@@ -365,7 +365,7 @@ export default function AssessmentWizardPage() {
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="inline-flex items-center gap-2 h-10 px-6 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="inline-flex items-center gap-2 h-10 px-6 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {submitting ? (
                   <>
@@ -379,7 +379,7 @@ export default function AssessmentWizardPage() {
             ) : (
               <button
                 onClick={() => handleNavigate(currentSection + 1)}
-                className="inline-flex items-center gap-2 h-10 px-5 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] transition-colors"
+                className="inline-flex items-center gap-2 h-10 px-5 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark transition-colors"
               >
                 Next
                 <ChevronRight className="h-4 w-4" />

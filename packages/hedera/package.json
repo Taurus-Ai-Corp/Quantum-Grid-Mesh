@@ -14,7 +14,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@hashgraph/sdk": "^2.77.0"
+    "@hiero-ledger/sdk": "^2.82.0"
   },
   "devDependencies": {
     "@taurus/tsconfig": "workspace:*",

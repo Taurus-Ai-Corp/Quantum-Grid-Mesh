@@ -71,16 +71,16 @@ export default function PricingPage() {
     <div className="bg-white">
       {/* Header */}
       <section className="max-w-[1200px] mx-auto px-6 pt-20 pb-14 text-center">
-        <span className="inline-block font-[var(--font-mono)] text-[11px] font-medium tracking-widest text-[#2563EB] uppercase mb-4 px-3 py-1 bg-[#EFF6FF] border border-[#BFDBFE] rounded-full">
+        <span className="inline-block font-mono text-[11px] font-medium tracking-widest text-[#2563EB] uppercase mb-4 px-3 py-1 bg-[#EFF6FF] border border-[#BFDBFE] rounded-full">
           EUR Pricing — EU Jurisdiction
         </span>
         <h1
-          className="font-[var(--font-heading)] font-bold text-[var(--graphite)] mb-4"
+          className="font-heading font-bold text-graphite mb-4"
           style={{ fontSize: 'clamp(32px, 4.5vw, 52px)' }}
         >
           Simple, Transparent Pricing
         </h1>
-        <p className="text-lg text-[var(--graphite-med)] max-w-[500px] mx-auto">
+        <p className="text-lg text-graphite-med max-w-[500px] mx-auto">
           14-day free trial on all plans. No credit card required. Cancel anytime.
         </p>
       </section>
@@ -91,15 +91,15 @@ export default function PricingPage() {
           {PLANS.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-[var(--radius)] p-7 flex flex-col ${
+              className={`relative rounded-brand p-7 flex flex-col ${
                 plan.featured
-                  ? 'bg-[var(--graphite)] text-white shadow-lg ring-2 ring-[var(--accent)] scale-[1.02]'
-                  : 'bg-white border border-[var(--graphite-ghost)] shadow-sm'
+                  ? 'bg-graphite text-white shadow-lg ring-2 ring-accent scale-[1.02]'
+                  : 'bg-white border border-graphite-ghost shadow-sm'
               }`}
             >
               {plan.featured && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center font-[var(--font-mono)] text-[10px] font-semibold uppercase tracking-widest text-white bg-[var(--accent)] px-3 py-1 rounded-full">
+                  <span className="inline-flex items-center font-mono text-[10px] font-semibold uppercase tracking-widest text-white bg-accent px-3 py-1 rounded-full">
                     Most Popular
                   </span>
                 </div>
@@ -108,16 +108,16 @@ export default function PricingPage() {
               {/* Plan name + price */}
               <div className="mb-6">
                 <h2
-                  className={`font-[var(--font-heading)] text-lg font-bold mb-1 ${
-                    plan.featured ? 'text-white' : 'text-[var(--graphite)]'
+                  className={`font-heading text-lg font-bold mb-1 ${
+                    plan.featured ? 'text-white' : 'text-graphite'
                   }`}
                 >
                   {plan.name}
                 </h2>
                 <div className="flex items-end gap-1 mb-2">
                   <span
-                    className={`font-[var(--font-heading)] text-4xl font-bold ${
-                      plan.featured ? 'text-white' : 'text-[var(--graphite)]'
+                    className={`font-heading text-4xl font-bold ${
+                      plan.featured ? 'text-white' : 'text-graphite'
                     }`}
                   >
                     {plan.price}
@@ -125,7 +125,7 @@ export default function PricingPage() {
                   {plan.period && (
                     <span
                       className={`text-sm pb-1.5 ${
-                        plan.featured ? 'text-white/60' : 'text-[var(--graphite-light)]'
+                        plan.featured ? 'text-white/60' : 'text-graphite-light'
                       }`}
                     >
                       {plan.period}
@@ -134,7 +134,7 @@ export default function PricingPage() {
                 </div>
                 <p
                   className={`text-sm leading-relaxed ${
-                    plan.featured ? 'text-white/70' : 'text-[var(--graphite-med)]'
+                    plan.featured ? 'text-white/70' : 'text-graphite-med'
                   }`}
                 >
                   {plan.description}
@@ -146,11 +146,11 @@ export default function PricingPage() {
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5">
                     <Check
-                      className="h-4 w-4 mt-0.5 shrink-0 text-[var(--accent)]"
+                      className="h-4 w-4 mt-0.5 shrink-0 text-accent"
                     />
                     <span
                       className={`text-sm ${
-                        plan.featured ? 'text-white/85' : 'text-[var(--graphite-med)]'
+                        plan.featured ? 'text-white/85' : 'text-graphite-med'
                       }`}
                     >
                       {feature}
@@ -163,7 +163,7 @@ export default function PricingPage() {
               {plan.key === 'enterprise' ? (
                 <Link
                   href="/contact"
-                  className={`inline-flex items-center justify-center gap-2 h-11 px-6 text-sm font-semibold rounded-[var(--radius)] transition-colors border border-[var(--graphite-ghost)] text-[var(--graphite)] hover:bg-[var(--graphite-whisper)]`}
+                  className={`inline-flex items-center justify-center gap-2 h-11 px-6 text-sm font-semibold rounded-brand transition-colors border border-graphite-ghost text-graphite hover:bg-graphite-whisper`}
                 >
                   {plan.cta}
                   <ChevronRight className="h-4 w-4" />
@@ -176,9 +176,9 @@ export default function PricingPage() {
         </div>
 
         {/* Bottom note */}
-        <p className="text-center text-sm text-[var(--graphite-light)] mt-10">
+        <p className="text-center text-sm text-graphite-light mt-10">
           All prices in EUR, excluding VAT.{' '}
-          <Link href="/contact" className="text-[var(--accent)] hover:underline">
+          <Link href="/contact" className="text-accent hover:underline">
             Contact us
           </Link>{' '}
           for annual billing discounts (up to 20% off).

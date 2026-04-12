@@ -2,27 +2,47 @@
 @import "tailwindcss";
 @import "@taurus/ui/styles";
 
-:root {
-  --bone: #F5F1EB;
-  --bone-deep: #FAF8F5;
-  --graphite: #1A1D21;
-  --graphite-med: #4B5563;
-  --graphite-light: #9CA3AF;
-  --graphite-faint: #D1D5DB;
-  --graphite-ghost: #E5E7EB;
-  --graphite-whisper: #F3F4F6;
-  --accent: #008E8A;
-  --accent-dark: #00706E;
-  --accent-light: #E0F5F4;
-  --accent-glow: rgba(0, 142, 138, 0.08);
-  --jurisdiction-eu: #2563EB;
-  --jurisdiction-na: #DC2626;
-  --jurisdiction-in: #EA580C;
-  --jurisdiction-ae: #059669;
-  --radius: 8px;
+@theme {
+  --color-bone: #F5F1EB;
+  --color-bone-deep: #FAF8F5;
+  --color-graphite: #1A1D21;
+  --color-graphite-med: #4B5563;
+  --color-graphite-light: #9CA3AF;
+  --color-graphite-faint: #D1D5DB;
+  --color-graphite-ghost: #E5E7EB;
+  --color-graphite-whisper: #F3F4F6;
+  --color-accent: #008E8A;
+  --color-accent-dark: #00706E;
+  --color-accent-light: #E0F5F4;
+  --color-accent-glow: rgba(0, 142, 138, 0.08);
+  --color-jurisdiction-eu: #2563EB;
+  --color-jurisdiction-na: #DC2626;
+  --color-jurisdiction-in: #EA580C;
+  --color-jurisdiction-ae: #059669;
+  --radius-brand: 8px;
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --font-heading: 'Jura', sans-serif;
+}
+
+:root {
+  --bone: var(--color-bone);
+  --bone-deep: var(--color-bone-deep);
+  --graphite: var(--color-graphite);
+  --graphite-med: var(--color-graphite-med);
+  --graphite-light: var(--color-graphite-light);
+  --graphite-faint: var(--color-graphite-faint);
+  --graphite-ghost: var(--color-graphite-ghost);
+  --graphite-whisper: var(--color-graphite-whisper);
+  --accent: var(--color-accent);
+  --accent-dark: var(--color-accent-dark);
+  --accent-light: var(--color-accent-light);
+  --accent-glow: var(--color-accent-glow);
+  --jurisdiction-eu: var(--color-jurisdiction-eu);
+  --jurisdiction-na: var(--color-jurisdiction-na);
+  --jurisdiction-in: var(--color-jurisdiction-in);
+  --jurisdiction-ae: var(--color-jurisdiction-ae);
+  --radius: var(--radius-brand);
 }
 
 html { scroll-behavior: smooth; }

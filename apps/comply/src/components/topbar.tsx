@@ -20,12 +20,12 @@ export function Topbar() {
   const pageTitle = PATH_LABELS[pathname] ?? 'Dashboard'
 
   return (
-    <header className="h-14 bg-white border-b border-[var(--graphite-ghost)] flex items-center justify-between px-6 shrink-0">
+    <header className="h-14 bg-white border-b border-graphite-ghost flex items-center justify-between px-6 shrink-0">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm">
-        <span className="text-[var(--graphite-light)]">GRIDERA Comply</span>
-        <span className="text-[var(--graphite-ghost)]">/</span>
-        <span className="font-medium text-[var(--graphite)]">{pageTitle}</span>
+        <span className="text-graphite-light">GRIDERA Comply</span>
+        <span className="text-graphite-ghost">/</span>
+        <span className="font-medium text-graphite">{pageTitle}</span>
       </div>
 
       {/* Right side */}

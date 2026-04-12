@@ -98,9 +98,9 @@ function StatusPill({ status }: { status: KeyStatus }) {
 function AlgoBadge({ algorithm, isPqc }: { algorithm: string; isPqc: boolean }) {
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold font-[var(--font-mono)] ${
+      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold font-mono ${
         isPqc
-          ? 'text-[var(--accent)] bg-[var(--accent-light)]'
+          ? 'text-accent bg-accent-light'
           : 'text-amber-700 bg-amber-50'
       }`}
     >
@@ -118,9 +118,9 @@ function QuantumGauge({ pqcCount, total }: { pqcCount: number; total: number }) 
   const strokeDashoffset = circumference - (pct / 100) * circumference
 
   return (
-    <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6">
-      <h2 className="font-semibold text-sm text-[var(--graphite)] mb-4 flex items-center gap-2">
-        <Shield className="h-4 w-4 text-[var(--accent)]" />
+    <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6">
+      <h2 className="font-semibold text-sm text-graphite mb-4 flex items-center gap-2">
+        <Shield className="h-4 w-4 text-accent" />
         Quantum Readiness
       </h2>
 
@@ -153,10 +153,10 @@ function QuantumGauge({ pqcCount, total }: { pqcCount: number; total: number }) 
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)]">
+            <span className="font-heading text-2xl font-bold text-graphite">
               {pct}%
             </span>
-            <span className="text-[10px] text-[var(--graphite-light)] uppercase tracking-wide mt-0.5">
+            <span className="text-[10px] text-graphite-light uppercase tracking-wide mt-0.5">
               quantum-safe
             </span>
           </div>
@@ -164,18 +164,18 @@ function QuantumGauge({ pqcCount, total }: { pqcCount: number; total: number }) 
 
         {/* Text */}
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-[var(--graphite)] mb-2">
+          <p className="text-sm font-medium text-graphite mb-2">
             Your organisation is{' '}
-            <span className="text-[var(--accent)] font-semibold">{pct}% quantum-ready</span>
+            <span className="text-accent font-semibold">{pct}% quantum-ready</span>
           </p>
-          <p className="text-xs text-[var(--graphite-med)] mb-4 leading-relaxed">
+          <p className="text-xs text-graphite-med mb-4 leading-relaxed">
             {pqcCount} of {total} keys use NIST-standardised post-quantum algorithms (ML-DSA / ML-KEM).
           </p>
 
           {/* Recommendations */}
           {total - pqcCount > 0 && (
             <div className="space-y-1.5">
-              <p className="text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">
+              <p className="text-xs font-semibold text-graphite-light uppercase tracking-wide">
                 Migration recommendations
               </p>
               <div className="flex items-start gap-2 text-xs text-amber-700">
@@ -234,11 +234,11 @@ function RotationModal({
         className="absolute inset-0 bg-black/40 backdrop-blur-sm"
         onClick={step === 'rotating' ? undefined : onClose}
       />
-      <div className="relative bg-white rounded-[var(--radius)] shadow-xl border border-[var(--graphite-ghost)] w-full max-w-md p-6">
+      <div className="relative bg-white rounded-brand shadow-xl border border-graphite-ghost w-full max-w-md p-6">
         {step !== 'rotating' && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-[var(--graphite-light)] hover:text-[var(--graphite)] transition-colors"
+            className="absolute top-4 right-4 text-graphite-light hover:text-graphite transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -251,53 +251,53 @@ function RotationModal({
               <div
                 className={`h-2 w-2 rounded-full transition-colors ${
                   s === step
-                    ? 'bg-[var(--accent)]'
+                    ? 'bg-accent'
                     : i < (['configure', 'rotating', 'success'] as RotationStep[]).indexOf(step)
-                    ? 'bg-[var(--accent-dark)]'
-                    : 'bg-[var(--graphite-ghost)]'
+                    ? 'bg-accent-dark'
+                    : 'bg-graphite-ghost'
                 }`}
               />
-              {i < 2 && <div className="h-px w-6 bg-[var(--graphite-ghost)]" />}
+              {i < 2 && <div className="h-px w-6 bg-graphite-ghost" />}
             </div>
           ))}
-          <span className="ml-2 text-xs text-[var(--graphite-light)] capitalize">{step === 'rotating' ? 'Generating…' : step}</span>
+          <span className="ml-2 text-xs text-graphite-light capitalize">{step === 'rotating' ? 'Generating…' : step}</span>
         </div>
 
         {/* Step: Configure */}
         {step === 'configure' && (
           <>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-lg bg-[var(--accent-light)] flex items-center justify-center shrink-0">
-                <RefreshCw className="h-5 w-5 text-[var(--accent)]" />
+              <div className="w-10 h-10 rounded-lg bg-accent-light flex items-center justify-center shrink-0">
+                <RefreshCw className="h-5 w-5 text-accent" />
               </div>
               <div>
-                <h2 className="font-semibold text-base text-[var(--graphite)]">Rotate Key</h2>
-                <p className="text-xs text-[var(--graphite-med)]">Configure new quantum-safe keypair</p>
+                <h2 className="font-semibold text-base text-graphite">Rotate Key</h2>
+                <p className="text-xs text-graphite-med">Configure new quantum-safe keypair</p>
               </div>
             </div>
 
             {/* Current key info */}
-            <div className="bg-[var(--bone)] rounded-[var(--radius)] border border-[var(--graphite-ghost)] p-4 mb-5 text-sm space-y-2">
+            <div className="bg-bone rounded-brand border border-graphite-ghost p-4 mb-5 text-sm space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">Current Key</span>
+                <span className="text-xs font-semibold text-graphite-light uppercase tracking-wide">Current Key</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[var(--graphite-med)] text-xs">Algorithm:</span>
+                <span className="text-graphite-med text-xs">Algorithm:</span>
                 <AlgoBadge algorithm={keyRecord.algorithm} isPqc={keyRecord.isPqc} />
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[var(--graphite-med)] text-xs">Created:</span>
-                <span className="font-[var(--font-mono)] text-xs text-[var(--graphite)]">{keyRecord.created}</span>
+                <span className="text-graphite-med text-xs">Created:</span>
+                <span className="font-mono text-xs text-graphite">{keyRecord.created}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[var(--graphite-med)] text-xs">Type:</span>
-                <span className="text-xs text-[var(--graphite)]">{keyRecord.type}</span>
+                <span className="text-graphite-med text-xs">Type:</span>
+                <span className="text-xs text-graphite">{keyRecord.type}</span>
               </div>
             </div>
 
             {/* New algorithm selector */}
             <div className="mb-5">
-              <label className="block text-xs font-semibold text-[var(--graphite)] mb-2 uppercase tracking-wide">
+              <label className="block text-xs font-semibold text-graphite mb-2 uppercase tracking-wide">
                 New Algorithm
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -305,15 +305,15 @@ function RotationModal({
                   <button
                     key={alg}
                     onClick={() => setSelectedAlgorithm(alg)}
-                    className={`px-3 py-2.5 rounded-[var(--radius)] border text-xs font-[var(--font-mono)] font-semibold text-left transition-colors ${
+                    className={`px-3 py-2.5 rounded-brand border text-xs font-mono font-semibold text-left transition-colors ${
                       selectedAlgorithm === alg
-                        ? 'border-[var(--accent)] bg-[var(--accent-light)] text-[var(--accent)]'
-                        : 'border-[var(--graphite-ghost)] hover:border-[var(--accent)] text-[var(--graphite-med)] hover:text-[var(--graphite)]'
+                        ? 'border-accent bg-accent-light text-accent'
+                        : 'border-graphite-ghost hover:border-accent text-graphite-med hover:text-graphite'
                     }`}
                   >
                     {alg}
                     {alg === 'ML-DSA-65' || alg === 'ML-KEM-768' ? (
-                      <span className="ml-1 text-[9px] text-[var(--accent)] font-sans font-medium">★ Recommended</span>
+                      <span className="ml-1 text-[9px] text-accent font-sans font-medium">★ Recommended</span>
                     ) : null}
                   </button>
                 ))}
@@ -321,7 +321,7 @@ function RotationModal({
             </div>
 
             {/* Warning */}
-            <div className="flex items-start gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-[var(--radius)] p-3 mb-5">
+            <div className="flex items-start gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-brand p-3 mb-5">
               <AlertTriangle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
               <span>Dependent systems will be updated automatically. Old key remains valid for 30 days.</span>
             </div>
@@ -329,13 +329,13 @@ function RotationModal({
             <div className="flex items-center gap-3">
               <button
                 onClick={handleRotate}
-                className="flex-1 h-10 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] transition-colors"
+                className="flex-1 h-10 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark transition-colors"
               >
                 Rotate Key
               </button>
               <button
                 onClick={onClose}
-                className="h-10 px-4 text-sm font-medium text-[var(--graphite-med)] hover:text-[var(--graphite)] transition-colors"
+                className="h-10 px-4 text-sm font-medium text-graphite-med hover:text-graphite transition-colors"
               >
                 Cancel
               </button>
@@ -346,13 +346,13 @@ function RotationModal({
         {/* Step: Rotating */}
         {step === 'rotating' && (
           <div className="flex flex-col items-center py-8 text-center">
-            <div className="w-14 h-14 rounded-full bg-[var(--accent-light)] flex items-center justify-center mb-5">
-              <Loader2 className="h-7 w-7 text-[var(--accent)] animate-spin" />
+            <div className="w-14 h-14 rounded-full bg-accent-light flex items-center justify-center mb-5">
+              <Loader2 className="h-7 w-7 text-accent animate-spin" />
             </div>
-            <h2 className="font-semibold text-base text-[var(--graphite)] mb-2">
+            <h2 className="font-semibold text-base text-graphite mb-2">
               Generating new quantum-safe keypair…
             </h2>
-            <p className="text-xs text-[var(--graphite-med)] leading-relaxed max-w-xs">
+            <p className="text-xs text-graphite-med leading-relaxed max-w-xs">
               Using {selectedAlgorithm} (NIST FIPS {selectedAlgorithm.startsWith('ML-DSA') ? '204' : '203'}).
               This takes a moment.
             </p>
@@ -366,31 +366,31 @@ function RotationModal({
               <div className="w-14 h-14 rounded-full bg-emerald-50 flex items-center justify-center mb-4">
                 <CheckCircle className="h-7 w-7 text-emerald-600" />
               </div>
-              <h2 className="font-semibold text-base text-[var(--graphite)] mb-1">Key Rotated Successfully</h2>
-              <p className="text-xs text-[var(--graphite-med)]">
+              <h2 className="font-semibold text-base text-graphite mb-1">Key Rotated Successfully</h2>
+              <p className="text-xs text-graphite-med">
                 New {selectedAlgorithm} keypair is now active.
               </p>
             </div>
 
-            <div className="bg-[var(--bone)] rounded-[var(--radius)] border border-[var(--graphite-ghost)] p-4 mb-5 text-sm space-y-2">
+            <div className="bg-bone rounded-brand border border-graphite-ghost p-4 mb-5 text-sm space-y-2">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[var(--graphite-med)]">New Algorithm:</span>
+                <span className="text-xs text-graphite-med">New Algorithm:</span>
                 <AlgoBadge algorithm={selectedAlgorithm} isPqc={true} />
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[var(--graphite-med)]">Key ID:</span>
-                <span className="font-[var(--font-mono)] text-xs text-[var(--graphite)]">{newKeyId.slice(-12)}</span>
+                <span className="text-xs text-graphite-med">Key ID:</span>
+                <span className="font-mono text-xs text-graphite">{newKeyId.slice(-12)}</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-2 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-[var(--radius)] p-3 mb-5">
+            <div className="flex items-start gap-2 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-brand p-3 mb-5">
               <CheckCircle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
               <span>Previous key deprecated. 30-day revocation grace period active.</span>
             </div>
 
             <button
               onClick={handleDone}
-              className="w-full h-10 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] transition-colors"
+              className="w-full h-10 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark transition-colors"
             >
               Done
             </button>
@@ -445,9 +445,9 @@ export default function SecurityPage() {
       value: totalKeys,
       icon: Key,
       description: 'All cryptographic keys',
-      colorClass: 'text-[var(--graphite)]',
-      bgClass: 'bg-[var(--accent-light)]',
-      iconClass: 'text-[var(--accent)]',
+      colorClass: 'text-graphite',
+      bgClass: 'bg-accent-light',
+      iconClass: 'text-accent',
     },
     {
       label: 'Quantum-Safe',
@@ -483,16 +483,16 @@ export default function SecurityPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)] mb-1">
+          <h1 className="font-heading text-2xl font-bold text-graphite mb-1">
             Security
           </h1>
-          <p className="text-sm text-[var(--graphite-med)]">
+          <p className="text-sm text-graphite-med">
             Post-quantum key management and quantum readiness
           </p>
         </div>
         <Link
           href="/dashboard/security/algorithms"
-          className="inline-flex items-center gap-2 h-9 px-4 text-sm font-medium text-[var(--accent)] border border-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-light)] transition-colors"
+          className="inline-flex items-center gap-2 h-9 px-4 text-sm font-medium text-accent border border-accent rounded-brand hover:bg-accent-light transition-colors"
         >
           <BookOpen className="h-4 w-4" />
           Algorithm Reference
@@ -506,20 +506,20 @@ export default function SecurityPage() {
           return (
             <div
               key={card.label}
-              className="bg-white rounded-[var(--radius)] p-5 border border-[var(--graphite-ghost)] shadow-sm"
+              className="bg-white rounded-brand p-5 border border-graphite-ghost shadow-sm"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-medium text-[var(--graphite-light)] uppercase tracking-wide">
+                <span className="text-xs font-medium text-graphite-light uppercase tracking-wide">
                   {card.label}
                 </span>
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${card.bgClass}`}>
                   <Icon className={`h-4 w-4 ${card.iconClass}`} />
                 </div>
               </div>
-              <p className={`font-[var(--font-heading)] text-3xl font-bold ${card.colorClass}`}>
+              <p className={`font-heading text-3xl font-bold ${card.colorClass}`}>
                 {card.value}
               </p>
-              <p className="text-xs text-[var(--graphite-light)] mt-1">{card.description}</p>
+              <p className="text-xs text-graphite-light mt-1">{card.description}</p>
             </div>
           )
         })}
@@ -534,30 +534,30 @@ export default function SecurityPage() {
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_320px] gap-6">
 
         {/* Key inventory table */}
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm overflow-hidden">
-          <div className="px-5 py-4 border-b border-[var(--graphite-ghost)] flex items-center justify-between">
-            <h2 className="font-semibold text-sm text-[var(--graphite)] flex items-center gap-2">
-              <Key className="h-4 w-4 text-[var(--accent)]" />
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm overflow-hidden">
+          <div className="px-5 py-4 border-b border-graphite-ghost flex items-center justify-between">
+            <h2 className="font-semibold text-sm text-graphite flex items-center gap-2">
+              <Key className="h-4 w-4 text-accent" />
               Key Inventory
             </h2>
-            <span className="text-xs text-[var(--graphite-light)]">{keys.length} keys</span>
+            <span className="text-xs text-graphite-light">{keys.length} keys</span>
           </div>
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-[var(--graphite-ghost)] bg-[var(--bone)]">
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">
+              <tr className="border-b border-graphite-ghost bg-bone">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide">
                   Algorithm
                 </th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide hidden sm:table-cell">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide hidden sm:table-cell">
                   Type
                 </th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide">
                   Status
                 </th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide hidden md:table-cell">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide hidden md:table-cell">
                   Created
                 </th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide hidden lg:table-cell">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide hidden lg:table-cell">
                   Last Used
                 </th>
                 <th className="px-5 py-3" />
@@ -567,24 +567,24 @@ export default function SecurityPage() {
               {keys.map((key) => (
                 <tr
                   key={key.id}
-                  className="border-b border-[var(--graphite-ghost)] last:border-0 hover:bg-[var(--bone)] transition-colors"
+                  className="border-b border-graphite-ghost last:border-0 hover:bg-bone transition-colors"
                 >
                   <td className="px-5 py-4">
                     <AlgoBadge algorithm={key.algorithm} isPqc={key.isPqc} />
                   </td>
                   <td className="px-5 py-4 hidden sm:table-cell">
-                    <span className="text-xs text-[var(--graphite-med)]">{key.type}</span>
+                    <span className="text-xs text-graphite-med">{key.type}</span>
                   </td>
                   <td className="px-5 py-4">
                     <StatusPill status={key.status} />
                   </td>
                   <td className="px-5 py-4 hidden md:table-cell">
-                    <span className="font-[var(--font-mono)] text-xs text-[var(--graphite-light)]">
+                    <span className="font-mono text-xs text-graphite-light">
                       {key.created}
                     </span>
                   </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
-                    <span className="font-[var(--font-mono)] text-xs text-[var(--graphite-light)]">
+                    <span className="font-mono text-xs text-graphite-light">
                       {key.lastUsed}
                     </span>
                   </td>
@@ -593,7 +593,7 @@ export default function SecurityPage() {
                       {key.status === 'Active' ? (
                         <button
                           onClick={() => setRotatingKey(key)}
-                          className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--accent)] hover:text-[var(--accent-dark)] transition-colors"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-dark transition-colors"
                         >
                           <RefreshCw className="h-3 w-3" />
                           Rotate
@@ -620,7 +620,7 @@ export default function SecurityPage() {
                           </button>
                         </>
                       ) : (
-                        <span className="text-xs text-[var(--graphite-faint)]">Revoked</span>
+                        <span className="text-xs text-graphite-faint">Revoked</span>
                       )}
                     </div>
                   </td>

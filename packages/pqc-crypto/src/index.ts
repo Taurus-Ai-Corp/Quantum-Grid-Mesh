@@ -14,10 +14,13 @@ export { generateKeyPair, sign, verify } from './sign.js';
 export type { KemEncapsulateResult } from './kem.js';
 export { kemGenerateKeyPair, encapsulate, decapsulate } from './kem.js';
 
-// Hash (SHA-256)
-export { hashPayload, hashBytes } from './hash.js';
+// Hash (SHA-256 + SHAKE-256)
+export { hashPayload, hashBytes, hashPayloadQuantum, hashBytesQuantum } from './hash.js';
 
-// Keys (AES-256-GCM key encryption)
+// KDF (HKDF-SHA3-256)
+export { deriveKey, deriveAgentSeed, deriveOrgEncryptionKey } from './kdf.js';
+
+// Keys (AES-256-GCM key encryption, HKDF-SHA3-256 derivation)
 export { generateOrgKeyPair, encryptSecretKey, decryptSecretKey } from './keys.js';
 
 // Stamp (PQC stamping)

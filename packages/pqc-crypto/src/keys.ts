@@ -1,20 +1,10 @@
-import { createCipheriv, createDecipheriv, createHmac, randomBytes } from 'node:crypto';
+import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
 import { generateKeyPair } from './sign.js';
+import { deriveOrgEncryptionKey } from './kdf.js';
 import type { PqcKeyPair, EncryptedKey } from './types.js';
 
 const AES_ALGO = 'aes-256-gcm';
 const IV_BYTES = 12; // 96-bit IV recommended for GCM
-
-/**
- * Derives a 32-byte AES key from a master key + orgId using HMAC-SHA256.
- */
-function deriveKey(masterKey: string, orgId: string): Buffer {
-  return Buffer.from(
-    createHmac('sha256', masterKey)
-      .update(`pqc-secret-key:${orgId}`)
-      .digest()
-  );
-}
 
 export function generateOrgKeyPair(): PqcKeyPair {
   return generateKeyPair();
@@ -25,7 +15,7 @@ export function encryptSecretKey(
   masterKey: string,
   orgId: string
 ): EncryptedKey {
-  const key = deriveKey(masterKey, orgId);
+  const key = Buffer.from(deriveOrgEncryptionKey(masterKey, orgId));
   const iv = randomBytes(IV_BYTES);
   const cipher = createCipheriv(AES_ALGO, key, iv);
 
@@ -44,7 +34,7 @@ export function decryptSecretKey(
   masterKey: string,
   orgId: string
 ): Uint8Array {
-  const key = deriveKey(masterKey, orgId);
+  const key = Buffer.from(deriveOrgEncryptionKey(masterKey, orgId));
   const iv = Buffer.from(encrypted.iv, 'base64');
   const ciphertext = Buffer.from(encrypted.ciphertext, 'base64');
   const authTag = Buffer.from(encrypted.authTag, 'base64');

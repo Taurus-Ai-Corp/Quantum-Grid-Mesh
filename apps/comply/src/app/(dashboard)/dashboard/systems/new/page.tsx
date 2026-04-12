@@ -51,7 +51,7 @@ function FieldLabel({ htmlFor, children, required }: { htmlFor: string; children
   return (
     <label
       htmlFor={htmlFor}
-      className="block text-sm font-medium text-[var(--graphite)] mb-1.5"
+      className="block text-sm font-medium text-graphite mb-1.5"
     >
       {children}
       {required && <span className="text-red-500 ml-0.5">*</span>}
@@ -107,7 +107,7 @@ export default function RegisterSystemPage() {
       {/* Back link */}
       <Link
         href="/dashboard/systems"
-        className="inline-flex items-center gap-1.5 text-sm text-[var(--graphite-med)] hover:text-[var(--graphite)] mb-6 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-graphite-med hover:text-graphite mb-6 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to AI Systems
@@ -115,14 +115,14 @@ export default function RegisterSystemPage() {
 
       {/* Header */}
       <div className="flex items-start gap-4 mb-8">
-        <div className="w-12 h-12 rounded-lg bg-[var(--accent-light)] flex items-center justify-center shrink-0">
-          <Server className="h-6 w-6 text-[var(--accent)]" />
+        <div className="w-12 h-12 rounded-lg bg-accent-light flex items-center justify-center shrink-0">
+          <Server className="h-6 w-6 text-accent" />
         </div>
         <div>
-          <h1 className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)] mb-1">
+          <h1 className="font-heading text-2xl font-bold text-graphite mb-1">
             Register AI System
           </h1>
-          <p className="text-sm text-[var(--graphite-med)]">
+          <p className="text-sm text-graphite-med">
             Provide details about your AI system for EU AI Act risk classification and
             compliance assessment.
           </p>
@@ -131,11 +131,11 @@ export default function RegisterSystemPage() {
 
       {/* Form */}
       <form onSubmit={handleSubmit} noValidate>
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm divide-y divide-[var(--graphite-ghost)]">
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm divide-y divide-graphite-ghost">
 
           {/* Section: Identity */}
           <div className="p-6 space-y-5">
-            <h2 className="text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">
+            <h2 className="text-xs font-semibold text-graphite-light uppercase tracking-wide">
               System Identity
             </h2>
 
@@ -148,7 +148,7 @@ export default function RegisterSystemPage() {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="e.g. Customer Churn Predictor"
-                className="w-full h-10 px-3 text-sm rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white text-[var(--graphite)] placeholder:text-[var(--graphite-faint)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition"
+                className="w-full h-10 px-3 text-sm rounded-brand border border-graphite-ghost bg-white text-graphite placeholder:text-graphite-faint focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition"
               />
             </div>
 
@@ -161,7 +161,7 @@ export default function RegisterSystemPage() {
                 onChange={handleChange}
                 rows={3}
                 placeholder="Brief description of what this AI system does…"
-                className="w-full px-3 py-2.5 text-sm rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white text-[var(--graphite)] placeholder:text-[var(--graphite-faint)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition resize-none"
+                className="w-full px-3 py-2.5 text-sm rounded-brand border border-graphite-ghost bg-white text-graphite placeholder:text-graphite-faint focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition resize-none"
               />
             </div>
 
@@ -174,14 +174,14 @@ export default function RegisterSystemPage() {
                 value={form.useCase}
                 onChange={handleChange}
                 placeholder="e.g. Predict customer churn for retention campaigns"
-                className="w-full h-10 px-3 text-sm rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white text-[var(--graphite)] placeholder:text-[var(--graphite-faint)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition"
+                className="w-full h-10 px-3 text-sm rounded-brand border border-graphite-ghost bg-white text-graphite placeholder:text-graphite-faint focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition"
               />
             </div>
           </div>
 
           {/* Section: Classification */}
           <div className="p-6 space-y-5">
-            <h2 className="text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">
+            <h2 className="text-xs font-semibold text-graphite-light uppercase tracking-wide">
               Classification
             </h2>
 
@@ -192,7 +192,7 @@ export default function RegisterSystemPage() {
                 name="industry"
                 value={form.industry}
                 onChange={handleChange}
-                className="w-full h-10 px-3 text-sm rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white text-[var(--graphite)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition appearance-none cursor-pointer"
+                className="w-full h-10 px-3 text-sm rounded-brand border border-graphite-ghost bg-white text-graphite focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition appearance-none cursor-pointer"
               >
                 {INDUSTRIES.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -209,7 +209,7 @@ export default function RegisterSystemPage() {
                 name="deploymentScope"
                 value={form.deploymentScope}
                 onChange={handleChange}
-                className="w-full h-10 px-3 text-sm rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white text-[var(--graphite)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition appearance-none cursor-pointer"
+                className="w-full h-10 px-3 text-sm rounded-brand border border-graphite-ghost bg-white text-graphite focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition appearance-none cursor-pointer"
               >
                 {DEPLOYMENT_SCOPES.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -226,7 +226,7 @@ export default function RegisterSystemPage() {
                 name="autonomyLevel"
                 value={form.autonomyLevel}
                 onChange={handleChange}
-                className="w-full h-10 px-3 text-sm rounded-[var(--radius)] border border-[var(--graphite-ghost)] bg-white text-[var(--graphite)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition appearance-none cursor-pointer"
+                className="w-full h-10 px-3 text-sm rounded-brand border border-graphite-ghost bg-white text-graphite focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition appearance-none cursor-pointer"
               >
                 {AUTONOMY_LEVELS.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -234,7 +234,7 @@ export default function RegisterSystemPage() {
                   </option>
                 ))}
               </select>
-              <p className="mt-1.5 text-xs text-[var(--graphite-light)]">
+              <p className="mt-1.5 text-xs text-graphite-light">
                 Fully autonomous systems are automatically classified as high-risk under EU AI Act Annex III.
               </p>
             </div>
@@ -243,7 +243,7 @@ export default function RegisterSystemPage() {
 
         {/* Error */}
         {error && (
-          <div className="mt-4 bg-red-50 border border-red-200 rounded-[var(--radius)] px-4 py-3 text-sm text-red-700">
+          <div className="mt-4 bg-red-50 border border-red-200 rounded-brand px-4 py-3 text-sm text-red-700">
             {error}
           </div>
         )}
@@ -253,13 +253,13 @@ export default function RegisterSystemPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="inline-flex items-center gap-2 h-10 px-6 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="inline-flex items-center gap-2 h-10 px-6 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {submitting ? 'Registering…' : 'Register System'}
           </button>
           <Link
             href="/dashboard/systems"
-            className="inline-flex items-center h-10 px-4 text-sm font-medium text-[var(--graphite-med)] hover:text-[var(--graphite)] transition-colors"
+            className="inline-flex items-center h-10 px-4 text-sm font-medium text-graphite-med hover:text-graphite transition-colors"
           >
             Cancel
           </Link>

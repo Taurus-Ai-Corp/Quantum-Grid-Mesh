@@ -15,7 +15,7 @@ interface ReportSummary {
 }
 
 const MODE_CONFIG: Record<string, { label: string; color: string; bg: string }> = {
-  template: { label: 'Template', color: 'text-[var(--graphite-med)]', bg: 'bg-[var(--bone)]' },
+  template: { label: 'Template', color: 'text-graphite-med', bg: 'bg-bone' },
   cloud: { label: 'AI Cloud', color: 'text-blue-700', bg: 'bg-blue-50' },
   sovereign: { label: 'AI Sovereign', color: 'text-emerald-700', bg: 'bg-emerald-50' },
 }
@@ -54,16 +54,16 @@ export default function ReportsPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)] mb-1">
+          <h1 className="font-heading text-2xl font-bold text-graphite mb-1">
             Reports
           </h1>
-          <p className="text-sm text-[var(--graphite-med)]">
+          <p className="text-sm text-graphite-med">
             EU AI Act conformity assessment reports — PQC signed
           </p>
         </div>
         <Link
           href="/dashboard/assessments"
-          className="inline-flex items-center gap-2 h-10 px-4 text-sm font-semibold text-[var(--graphite)] bg-white border border-[var(--graphite-ghost)] rounded-[var(--radius)] hover:bg-[var(--bone)] transition-colors"
+          className="inline-flex items-center gap-2 h-10 px-4 text-sm font-semibold text-graphite bg-white border border-graphite-ghost rounded-brand hover:bg-bone transition-colors"
         >
           <FileText className="h-4 w-4" />
           Go to Assessments
@@ -72,31 +72,31 @@ export default function ReportsPage() {
 
       {/* Error */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-[var(--radius)] p-4 text-sm text-red-700 mb-6">
+        <div className="bg-red-50 border border-red-200 rounded-brand p-4 text-sm text-red-700 mb-6">
           {error}
         </div>
       )}
 
       {/* Loading */}
       {loading && (
-        <div className="flex items-center justify-center h-48 text-sm text-[var(--graphite-light)]">
+        <div className="flex items-center justify-center h-48 text-sm text-graphite-light">
           Loading reports…
         </div>
       )}
 
       {/* Empty state */}
       {!loading && !error && reports.length === 0 && (
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-12 flex flex-col items-center text-center max-w-[480px] mx-auto mt-12">
-          <div className="w-12 h-12 rounded-lg bg-[var(--accent-light)] flex items-center justify-center mb-4">
-            <FileText className="h-6 w-6 text-[var(--accent)]" />
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-12 flex flex-col items-center text-center max-w-[480px] mx-auto mt-12">
+          <div className="w-12 h-12 rounded-lg bg-accent-light flex items-center justify-center mb-4">
+            <FileText className="h-6 w-6 text-accent" />
           </div>
-          <h2 className="font-semibold text-base text-[var(--graphite)] mb-2">No reports yet</h2>
-          <p className="text-sm text-[var(--graphite-med)] mb-6 leading-relaxed">
+          <h2 className="font-semibold text-base text-graphite mb-2">No reports yet</h2>
+          <p className="text-sm text-graphite-med mb-6 leading-relaxed">
             Generate a conformity assessment report from a completed assessment to see it here.
           </p>
           <Link
             href="/dashboard/assessments"
-            className="inline-flex items-center gap-2 h-10 px-5 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] transition-colors"
+            className="inline-flex items-center gap-2 h-10 px-5 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark transition-colors"
           >
             Go to Assessments
             <ChevronRight className="h-4 w-4" />
@@ -106,20 +106,20 @@ export default function ReportsPage() {
 
       {/* Reports table */}
       {!loading && !error && reports.length > 0 && (
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm overflow-hidden">
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm overflow-hidden">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-[var(--graphite-ghost)] bg-[var(--bone)]">
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide">
+              <tr className="border-b border-graphite-ghost bg-bone">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide">
                   Report ID
                 </th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide hidden sm:table-cell">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide hidden sm:table-cell">
                   Mode
                 </th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide hidden md:table-cell">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide hidden md:table-cell">
                   PQC Signature
                 </th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-[var(--graphite-light)] uppercase tracking-wide hidden lg:table-cell">
+                <th className="text-left px-5 py-3 text-xs font-semibold text-graphite-light uppercase tracking-wide hidden lg:table-cell">
                   Generated
                 </th>
                 <th className="px-5 py-3" />
@@ -131,13 +131,13 @@ export default function ReportsPage() {
                 return (
                   <tr
                     key={report.id}
-                    className="border-b border-[var(--graphite-ghost)] last:border-0 hover:bg-[var(--bone)] transition-colors"
+                    className="border-b border-graphite-ghost last:border-0 hover:bg-bone transition-colors"
                   >
                     <td className="px-5 py-4">
-                      <div className="font-mono text-xs text-[var(--graphite)]">
+                      <div className="font-mono text-xs text-graphite">
                         {report.id.slice(0, 8)}…
                       </div>
-                      <div className="text-xs text-[var(--graphite-light)] mt-0.5">
+                      <div className="text-xs text-graphite-light mt-0.5">
                         Assessment: {report.assessmentId.slice(0, 8)}…
                       </div>
                     </td>
@@ -148,7 +148,7 @@ export default function ReportsPage() {
                         {modeStyle.label}
                       </span>
                       {report.model && (
-                        <span className="ml-2 font-mono text-xs text-[var(--graphite-light)]">
+                        <span className="ml-2 font-mono text-xs text-graphite-light">
                           {report.model}
                         </span>
                       )}
@@ -156,22 +156,22 @@ export default function ReportsPage() {
                     <td className="px-5 py-4 hidden md:table-cell">
                       {report.pqcHash ? (
                         <div className="inline-flex items-center gap-1.5">
-                          <Shield className="h-3.5 w-3.5 text-[var(--accent)] shrink-0" />
-                          <span className="font-mono text-xs text-[var(--graphite-med)]">
+                          <Shield className="h-3.5 w-3.5 text-accent shrink-0" />
+                          <span className="font-mono text-xs text-graphite-med">
                             {truncateHash(report.pqcHash)}
                           </span>
                         </div>
                       ) : (
-                        <span className="text-xs text-[var(--graphite-faint)]">Unsigned (dev)</span>
+                        <span className="text-xs text-graphite-faint">Unsigned (dev)</span>
                       )}
                     </td>
-                    <td className="px-5 py-4 hidden lg:table-cell font-mono text-xs text-[var(--graphite-light)]">
+                    <td className="px-5 py-4 hidden lg:table-cell font-mono text-xs text-graphite-light">
                       {formatDate(report.createdAt)}
                     </td>
                     <td className="px-5 py-4 text-right">
                       <Link
                         href={`/dashboard/reports/${report.id}`}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--accent)] hover:text-[var(--accent-dark)] transition-colors"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-dark transition-colors"
                       >
                         View
                         <ChevronRight className="h-3 w-3" />

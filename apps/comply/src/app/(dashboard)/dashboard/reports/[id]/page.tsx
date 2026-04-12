@@ -220,7 +220,7 @@ export default function ReportViewerPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64 text-sm text-[var(--graphite-light)]">
+      <div className="flex items-center justify-center h-64 text-sm text-graphite-light">
         Loading report&hellip;
       </div>
     )
@@ -228,7 +228,7 @@ export default function ReportViewerPage() {
 
   if (error || !report) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-[var(--radius)] p-6 text-sm text-red-700 max-w-lg">
+      <div className="bg-red-50 border border-red-200 rounded-brand p-6 text-sm text-red-700 max-w-lg">
         {error ?? 'Report not found'}
       </div>
     )
@@ -278,7 +278,7 @@ export default function ReportViewerPage() {
         <div className="no-print flex items-center justify-between mb-6">
           <Link
             href="/dashboard/reports"
-            className="inline-flex items-center gap-1.5 text-sm text-[var(--graphite-med)] hover:text-[var(--graphite)] transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-graphite-med hover:text-graphite transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Reports
@@ -287,7 +287,7 @@ export default function ReportViewerPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyLink}
-              className="inline-flex items-center gap-1.5 h-9 px-3 text-sm font-medium text-[var(--graphite)] bg-white border border-[var(--graphite-ghost)] rounded-[var(--radius)] hover:bg-[var(--bone)] transition-colors"
+              className="inline-flex items-center gap-1.5 h-9 px-3 text-sm font-medium text-graphite bg-white border border-graphite-ghost rounded-brand hover:bg-bone transition-colors"
             >
               {copied ? (
                 <>
@@ -303,7 +303,7 @@ export default function ReportViewerPage() {
             </button>
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 h-9 px-4 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] transition-colors"
+              className="inline-flex items-center gap-1.5 h-9 px-4 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark transition-colors"
             >
               <Printer className="h-3.5 w-3.5" />
               Download PDF
@@ -312,12 +312,12 @@ export default function ReportViewerPage() {
         </div>
 
         {/* Report document */}
-        <div className="report-doc bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-8 max-w-[800px] mx-auto">
+        <div className="report-doc bg-white rounded-brand border border-graphite-ghost shadow-sm p-8 max-w-[800px] mx-auto">
 
           {/* Document header */}
           <div className="flex items-start justify-between gap-4 mb-6 pb-5 border-b border-gray-200">
             <div>
-              <div className="text-xs font-semibold text-[var(--accent)] tracking-widest uppercase mb-1">
+              <div className="text-xs font-semibold text-accent tracking-widest uppercase mb-1">
                 GRIDERA Comply
               </div>
               <div className="font-mono text-xs text-gray-400 mt-1">
@@ -334,7 +334,7 @@ export default function ReportViewerPage() {
             </div>
             <div className="text-right shrink-0">
               <div className="text-xs text-gray-500">Mode</div>
-              <div className="text-xs font-semibold text-[var(--graphite)] capitalize mt-0.5">
+              <div className="text-xs font-semibold text-graphite capitalize mt-0.5">
                 {report.mode === 'template'
                   ? 'Template'
                   : report.mode === 'sovereign'

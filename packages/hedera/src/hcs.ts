@@ -1,5 +1,5 @@
-import { TopicCreateTransaction, TopicMessageSubmitTransaction } from '@hashgraph/sdk'
-import type { Client } from '@hashgraph/sdk'
+import { TopicCreateTransaction, TopicMessageSubmitTransaction } from '@hiero-ledger/sdk'
+import type { Client } from '@hiero-ledger/sdk'
 
 /**
  * Submit a message to an existing HCS topic.

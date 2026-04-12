@@ -56,15 +56,15 @@ export function MigrationWizard() {
   }
 
   return (
-    <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6">
+    <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-lg bg-[var(--accent-light)] flex items-center justify-center shrink-0">
-          <Shield className="h-5 w-5 text-[var(--accent)]" />
+        <div className="w-10 h-10 rounded-lg bg-accent-light flex items-center justify-center shrink-0">
+          <Shield className="h-5 w-5 text-accent" />
         </div>
         <div className="flex-1 min-w-0">
-          <h2 className="font-semibold text-base text-[var(--graphite)]">PQC Migration Wizard</h2>
-          <p className="text-xs text-[var(--graphite-med)]">
+          <h2 className="font-semibold text-base text-graphite">PQC Migration Wizard</h2>
+          <p className="text-xs text-graphite-med">
             Migrate your cryptography to NIST-standardised post-quantum algorithms
           </p>
         </div>
@@ -73,7 +73,7 @@ export function MigrationWizard() {
           className={`inline-flex items-center px-2.5 py-0.5 text-xs font-semibold font-mono border ${
             isComplete
               ? 'border-transparent bg-emerald-50 text-emerald-700'
-              : 'border-[var(--graphite-ghost)] bg-[var(--bone)] text-[var(--graphite-med)]'
+              : 'border-graphite-ghost bg-bone text-graphite-med'
           }`}
         >
           {isComplete ? 'Quantum-Safe' : `Step ${currentIndex + 1} of 5`}
@@ -92,10 +92,10 @@ export function MigrationWizard() {
               <div
                 className={`relative w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-semibold border-2 transition-colors ${
                   isDone
-                    ? 'bg-[var(--accent)] border-[var(--accent)] text-white'
+                    ? 'bg-accent border-accent text-white'
                     : isCurrent
-                    ? 'bg-white border-[var(--accent)] text-[var(--accent)]'
-                    : 'bg-white border-[var(--graphite-ghost)] text-[var(--graphite-faint)]'
+                    ? 'bg-white border-accent text-accent'
+                    : 'bg-white border-graphite-ghost text-graphite-faint'
                 }`}
               >
                 {isDone ? (
@@ -109,7 +109,7 @@ export function MigrationWizard() {
               {idx < STATE_ORDER.length - 1 && (
                 <div
                   className={`h-px flex-1 transition-colors ${
-                    idx < currentIndex ? 'bg-[var(--accent)]' : 'bg-[var(--graphite-ghost)]'
+                    idx < currentIndex ? 'bg-accent' : 'bg-graphite-ghost'
                   }`}
                 />
               )}
@@ -120,35 +120,35 @@ export function MigrationWizard() {
 
       {/* Current state display */}
       <div
-        className={`rounded-[var(--radius)] border p-5 mb-6 transition-colors ${
+        className={`rounded-brand border p-5 mb-6 transition-colors ${
           isComplete
             ? 'border-emerald-200 bg-emerald-50'
-            : 'border-[var(--graphite-ghost)] bg-[var(--bone)]'
+            : 'border-graphite-ghost bg-bone'
         }`}
       >
         <div className="flex items-start gap-3">
           <div
             className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
-              isComplete ? 'bg-emerald-100' : 'bg-[var(--accent-light)]'
+              isComplete ? 'bg-emerald-100' : 'bg-accent-light'
             }`}
           >
             {isComplete ? (
               <CheckCircle2 className="h-5 w-5 text-emerald-600" />
             ) : (
-              <Shield className="h-5 w-5 text-[var(--accent)]" />
+              <Shield className="h-5 w-5 text-accent" />
             )}
           </div>
           <div>
             <p
               className={`text-sm font-semibold mb-0.5 ${
-                isComplete ? 'text-emerald-800' : 'text-[var(--graphite)]'
+                isComplete ? 'text-emerald-800' : 'text-graphite'
               }`}
             >
               {STATE_CONFIGS[currentState].label}
             </p>
             <p
               className={`text-xs ${
-                isComplete ? 'text-emerald-700' : 'text-[var(--graphite-med)]'
+                isComplete ? 'text-emerald-700' : 'text-graphite-med'
               }`}
             >
               {STATE_CONFIGS[currentState].description}
@@ -157,7 +157,7 @@ export function MigrationWizard() {
         </div>
 
         {/* Step labels row */}
-        <div className="mt-4 pt-4 border-t border-[var(--graphite-ghost)] grid grid-cols-5 gap-1">
+        <div className="mt-4 pt-4 border-t border-graphite-ghost grid grid-cols-5 gap-1">
           {STATE_ORDER.map((state, idx) => {
             const isCurrent = idx === currentIndex
             const isDone = idx < currentIndex
@@ -166,10 +166,10 @@ export function MigrationWizard() {
                 <p
                   className={`text-[10px] font-medium leading-tight ${
                     isCurrent
-                      ? 'text-[var(--accent)]'
+                      ? 'text-accent'
                       : isDone
-                      ? 'text-[var(--graphite-med)]'
-                      : 'text-[var(--graphite-faint)]'
+                      ? 'text-graphite-med'
+                      : 'text-graphite-faint'
                   }`}
                 >
                   {STATE_CONFIGS[state].label}
@@ -182,7 +182,7 @@ export function MigrationWizard() {
 
       {/* Success message */}
       {isComplete && (
-        <div className="flex items-start gap-2 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-[var(--radius)] p-3 mb-5">
+        <div className="flex items-start gap-2 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-brand p-3 mb-5">
           <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" />
           <span>Migration complete — all cryptography is quantum-safe</span>
         </div>
@@ -193,7 +193,7 @@ export function MigrationWizard() {
         <button
           onClick={handleAdvance}
           disabled={isAdvancing}
-          className="inline-flex items-center gap-2 h-10 px-6 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] transition-colors disabled:opacity-60 disabled:pointer-events-none"
+          className="inline-flex items-center gap-2 h-10 px-6 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark transition-colors disabled:opacity-60 disabled:pointer-events-none"
         >
           {isAdvancing ? (
             <>

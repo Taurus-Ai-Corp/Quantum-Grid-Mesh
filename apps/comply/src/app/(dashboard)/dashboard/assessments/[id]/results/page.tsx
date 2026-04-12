@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Shield, FileText, AlertTriangle, Loader2 } from 'lucide-react'
+import { ArrowLeft, Shield, FileText, AlertTriangle, Loader2, ChevronRight } from 'lucide-react'
 import { euAssessmentSections } from '@/lib/assessment-sections'
 import type { AssessmentRecord, Recommendation } from '@/lib/assessment-store'
 
@@ -44,7 +44,7 @@ const PRIORITY_CONFIG: Record<string, { label: string; color: string; bg: string
   critical: { label: 'Critical', color: 'text-red-700', bg: 'bg-red-50', border: 'border-l-red-500' },
   high: { label: 'High', color: 'text-amber-700', bg: 'bg-amber-50', border: 'border-l-amber-500' },
   medium: { label: 'Medium', color: 'text-blue-700', bg: 'bg-blue-50', border: 'border-l-blue-500' },
-  low: { label: 'Low', color: 'text-[var(--graphite-med)]', bg: 'bg-[var(--bone)]', border: 'border-l-[var(--graphite-ghost)]' },
+  low: { label: 'Low', color: 'text-graphite-med', bg: 'bg-bone', border: 'border-l-graphite-ghost' },
 }
 
 function ScoreGauge({ score, riskLevel }: { score: number; riskLevel: string }) {
@@ -82,10 +82,10 @@ function ScoreGauge({ score, riskLevel }: { score: number; riskLevel: string }) 
         </svg>
         {/* Center text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="font-[var(--font-heading)] text-3xl font-bold text-[var(--graphite)]">
+          <span className="font-heading text-3xl font-bold text-graphite">
             {score}%
           </span>
-          <span className="text-xs text-[var(--graphite-light)]">score</span>
+          <span className="text-xs text-graphite-light">score</span>
         </div>
       </div>
       <span
@@ -105,8 +105,8 @@ function CategoryBar({ label, score }: { label: string; score: number }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <span className="text-sm text-[var(--graphite)]">{label}</span>
-        <span className="text-xs font-semibold font-mono text-[var(--graphite)]">{score}%</span>
+        <span className="text-sm text-graphite">{label}</span>
+        <span className="text-xs font-semibold font-mono text-graphite">{score}%</span>
       </div>
       <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
         <div
@@ -121,15 +121,15 @@ function CategoryBar({ label, score }: { label: string; score: number }) {
 function RecommendationCard({ rec }: { rec: Recommendation }) {
   const config = PRIORITY_CONFIG[rec.priority] ?? PRIORITY_CONFIG['medium']!
   return (
-    <div className={`rounded-[var(--radius)] border border-[var(--graphite-ghost)] border-l-4 ${config.border} ${config.bg} p-4`}>
+    <div className={`rounded-brand border border-graphite-ghost border-l-4 ${config.border} ${config.bg} p-4`}>
       <div className="flex items-start justify-between gap-3 mb-1.5">
-        <h4 className="text-sm font-semibold text-[var(--graphite)]">{rec.title}</h4>
+        <h4 className="text-sm font-semibold text-graphite">{rec.title}</h4>
         <span className={`shrink-0 inline-flex items-center px-2 py-0.5 rounded text-xs font-bold ${config.color}`}>
           {config.label}
         </span>
       </div>
-      <p className="text-xs text-[var(--graphite-med)] leading-relaxed">{rec.description}</p>
-      <p className="text-xs text-[var(--graphite-light)] mt-2 font-medium">{rec.category}</p>
+      <p className="text-xs text-graphite-med leading-relaxed">{rec.description}</p>
+      <p className="text-xs text-graphite-light mt-2 font-medium">{rec.category}</p>
     </div>
   )
 }
@@ -179,7 +179,7 @@ export default function AssessmentResultsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64 text-sm text-[var(--graphite-light)]">
+      <div className="flex items-center justify-center h-64 text-sm text-graphite-light">
         Loading results…
       </div>
     )
@@ -187,7 +187,7 @@ export default function AssessmentResultsPage() {
 
   if (error || !assessment) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-[var(--radius)] p-6 text-sm text-red-700 max-w-lg">
+      <div className="bg-red-50 border border-red-200 rounded-brand p-6 text-sm text-red-700 max-w-lg">
         {error ?? 'Assessment not found'}
       </div>
     )
@@ -204,7 +204,7 @@ export default function AssessmentResultsPage() {
       {/* Back link */}
       <Link
         href="/dashboard/assessments"
-        className="inline-flex items-center gap-1.5 text-sm text-[var(--graphite-med)] hover:text-[var(--graphite)] mb-6 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-graphite-med hover:text-graphite mb-6 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to Assessments
@@ -212,11 +212,11 @@ export default function AssessmentResultsPage() {
 
       {/* Page header */}
       <div className="mb-6">
-        <h1 className="font-[var(--font-heading)] text-2xl font-bold text-[var(--graphite)] mb-1">
+        <h1 className="font-heading text-2xl font-bold text-graphite mb-1">
           Assessment Results
         </h1>
-        <p className="text-sm text-[var(--graphite-med)]">
-          System: <span className="font-medium text-[var(--graphite)]">{assessment.systemName}</span>
+        <p className="text-sm text-graphite-med">
+          System: <span className="font-medium text-graphite">{assessment.systemName}</span>
           {assessment.completedAt && (
             <>
               {' '}·{' '}
@@ -234,20 +234,20 @@ export default function AssessmentResultsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
         {/* Score gauge */}
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6 flex flex-col items-center justify-center">
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6 flex flex-col items-center justify-center">
           <ScoreGauge score={score} riskLevel={riskLevel} />
 
           {/* PQC badge — placeholder */}
-          <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[var(--bone)] border border-[var(--graphite-ghost)] text-xs text-[var(--graphite-med)]">
-            <Shield className="h-3.5 w-3.5 text-[var(--accent)]" />
+          <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-bone border border-graphite-ghost text-xs text-graphite-med">
+            <Shield className="h-3.5 w-3.5 text-accent" />
             <span className="font-medium">ML-DSA-65 Signed</span>
             <span className="text-emerald-600 font-bold">✓</span>
           </div>
         </div>
 
         {/* Category breakdown */}
-        <div className="lg:col-span-2 bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6">
-          <h3 className="text-sm font-semibold text-[var(--graphite)] mb-4">Section Scores</h3>
+        <div className="lg:col-span-2 bg-white rounded-brand border border-graphite-ghost shadow-sm p-6">
+          <h3 className="text-sm font-semibold text-graphite mb-4">Section Scores</h3>
           <div className="space-y-3.5">
             {euAssessmentSections.map((sec) => (
               <CategoryBar
@@ -262,15 +262,15 @@ export default function AssessmentResultsPage() {
 
       {/* Key findings */}
       {keyFindings.length > 0 && (
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6 mb-5">
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6 mb-5">
           <div className="flex items-center gap-2 mb-4">
-            <AlertTriangle className="h-4 w-4 text-[var(--accent)]" />
-            <h3 className="text-sm font-semibold text-[var(--graphite)]">Key Findings</h3>
+            <AlertTriangle className="h-4 w-4 text-accent" />
+            <h3 className="text-sm font-semibold text-graphite">Key Findings</h3>
           </div>
           <ul className="space-y-2.5">
             {keyFindings.map((finding, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--graphite-med)]">
-                <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--accent)] mt-2" />
+              <li key={i} className="flex items-start gap-2.5 text-sm text-graphite-med">
+                <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-accent mt-2" />
                 {finding}
               </li>
             ))}
@@ -280,10 +280,10 @@ export default function AssessmentResultsPage() {
 
       {/* Recommendations */}
       {recommendations.length > 0 && (
-        <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6 mb-5">
-          <h3 className="text-sm font-semibold text-[var(--graphite)] mb-4">
+        <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6 mb-5">
+          <h3 className="text-sm font-semibold text-graphite mb-4">
             Recommendations
-            <span className="ml-2 text-xs font-normal text-[var(--graphite-light)]">
+            <span className="ml-2 text-xs font-normal text-graphite-light">
               ({recommendations.length} items)
             </span>
           </h3>
@@ -295,21 +295,33 @@ export default function AssessmentResultsPage() {
         </div>
       )}
 
+      {/* Policy generation CTA */}
+      <div className="bg-accent-light border border-accent/20 rounded-brand p-5 mt-6 mb-5">
+        <h3 className="font-semibold text-graphite mb-1">Generate Compliance Policies</h3>
+        <p className="text-sm text-graphite-med mb-3">
+          Based on your assessment results, generate jurisdiction-aware policies
+          to address the gaps identified above.
+        </p>
+        <Link href="/dashboard/policies" className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-dark transition-colors">
+          Generate Policies <ChevronRight className="h-4 w-4" />
+        </Link>
+      </div>
+
       {/* CTA */}
-      <div className="bg-white rounded-[var(--radius)] border border-[var(--graphite-ghost)] shadow-sm p-6">
+      <div className="bg-white rounded-brand border border-graphite-ghost shadow-sm p-6">
         {generateError && (
-          <div className="mb-4 bg-red-50 border border-red-200 rounded-[var(--radius)] p-3 text-xs text-red-700">
+          <div className="mb-4 bg-red-50 border border-red-200 rounded-brand p-3 text-xs text-red-700">
             {generateError}
           </div>
         )}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[var(--accent-light)] flex items-center justify-center">
-              <FileText className="h-5 w-5 text-[var(--accent)]" />
+            <div className="w-9 h-9 rounded-lg bg-accent-light flex items-center justify-center">
+              <FileText className="h-5 w-5 text-accent" />
             </div>
             <div>
-              <p className="text-sm font-medium text-[var(--graphite)]">Generate Compliance Report</p>
-              <p className="text-xs text-[var(--graphite-light)]">
+              <p className="text-sm font-medium text-graphite">Generate Compliance Report</p>
+              <p className="text-xs text-graphite-light">
                 EU AI Act Conformity Assessment — PQC signed, PDF export ready
               </p>
             </div>
@@ -317,7 +329,7 @@ export default function AssessmentResultsPage() {
           <button
             onClick={() => { void handleGenerateReport() }}
             disabled={generating}
-            className="inline-flex items-center gap-2 h-10 px-5 text-sm font-semibold text-white bg-[var(--accent)] rounded-[var(--radius)] hover:bg-[var(--accent-dark)] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            className="inline-flex items-center gap-2 h-10 px-5 text-sm font-semibold text-white bg-accent rounded-brand hover:bg-accent-dark disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
           >
             {generating ? (
               <>
