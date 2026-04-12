@@ -1,24 +1,32 @@
 {
-  "file_count": 223,
+  "file_count": 283,
   "hubs": [
     {
       "path": "packages/db/src/schema/organizations.ts",
-      "importers": 7
+      "importers": 8
     },
     {
       "path": "packages/db/src/schema/enums.ts",
-      "importers": 6
+      "importers": 7
+    },
+    {
+      "path": "apps/comply/src/lib/assessment-scorer.ts",
+      "importers": 4
+    },
+    {
+      "path": "apps/comply/src/lib/assessment-store.ts",
+      "importers": 4
     },
     {
       "path": "apps/comply/src/components/jurisdiction-badge.tsx",
       "importers": 3
     },
     {
-      "path": "apps/comply/src/lib/assessment-scorer.ts",
+      "path": "apps/comply/src/lib/ai-guard-rules.ts",
       "importers": 3
     },
     {
-      "path": "apps/comply/src/lib/assessment-store.ts",
+      "path": "apps/comply/src/lib/assessment-sections.ts",
       "importers": 3
     },
     {
