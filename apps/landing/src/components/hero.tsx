@@ -6,7 +6,7 @@ const FEATURE_PILLS = [
   'ML-DSA FIPS 204',
   'ML-KEM FIPS 203',
   'EU AI ACT AUG 2026',
-  '37 AI AGENTS',
+  '8 COMPLIANCE ENGINES',
 ]
 
 const STATUS_ITEMS = [
@@ -96,7 +96,7 @@ export default function Hero() {
           className="reveal-hero text-[22px] font-normal text-[var(--graphite-med)] tracking-[-0.01em] mt-3"
           style={{ transitionDelay: '240ms' }}
         >
-          Get quantum-safe in 45 minutes, not months.
+          Get quantum-safe in minutes, not months.
         </p>
 
         {/* Description */}
@@ -110,7 +110,7 @@ export default function Hero() {
           <span className="font-mono text-[var(--accent)] text-[13px]">EU AI Act (Aug 2026)</span>{' '}
           and{' '}
           <span className="font-mono text-[var(--accent)] text-[13px]">SWIFT CSP 2027</span>{' '}
-          mandates. 37 AI agents continuously discover, assess, and remediate your cryptographic
+          mandates. 8 compliance engines continuously discover, assess, and score your cryptographic
           exposure — no consultants required.
         </p>
 

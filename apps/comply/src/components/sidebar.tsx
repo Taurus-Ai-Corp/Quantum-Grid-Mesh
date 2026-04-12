@@ -11,6 +11,10 @@ import {
   Shield,
   History,
   GraduationCap,
+  ShieldCheck,
+  ScrollText,
+  BadgeCheck,
+  Activity,
   Settings,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -24,6 +28,10 @@ const NAV_ITEMS = [
   { label: 'Security', href: '/dashboard/security', icon: Shield },
   { label: 'Audit Trail', href: '/dashboard/audit', icon: History },
   { label: 'Education', href: '/dashboard/education', icon: GraduationCap },
+  { label: 'Compliance', href: '/dashboard/compliance-matrix', icon: ShieldCheck },
+  { label: 'Policies', href: '/dashboard/policies', icon: ScrollText },
+  { label: 'SOC 2', href: '/dashboard/soc2', icon: BadgeCheck },
+  { label: 'Observability', href: '/dashboard/observe', icon: Activity },
 ]
 
 export function Sidebar() {
@@ -31,12 +39,12 @@ export function Sidebar() {
   const { user } = useUser()
 
   return (
-    <aside className="fixed top-0 left-0 h-screen w-[260px] bg-white border-r border-[var(--graphite-ghost)] flex flex-col z-40">
+    <aside className="fixed top-0 left-0 h-screen w-[260px] bg-white border-r border-graphite-ghost flex flex-col z-40">
       {/* Logo */}
-      <div className="px-5 py-4 border-b border-[var(--graphite-ghost)]">
+      <div className="px-5 py-4 border-b border-graphite-ghost">
         <div className="flex items-center gap-2">
-          <span className="font-[var(--font-heading)] text-base font-bold text-[var(--graphite)]">
-            GRIDERA <span className="text-[var(--graphite-faint)]">|</span> <span className="text-[var(--accent)]">COMPLY</span>
+          <span className="font-heading text-base font-bold text-graphite">
+            GRIDERA <span className="text-graphite-faint">|</span> <span className="text-accent">COMPLY</span>
           </span>
           <JurisdictionBadge jurisdiction="eu" size="sm" />
         </div>
@@ -53,10 +61,10 @@ export function Sidebar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-3 px-3 py-2 rounded-[var(--radius)] text-sm font-medium transition-colors',
+                    'flex items-center gap-3 px-3 py-2 rounded-brand text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-[var(--accent-light)] text-[var(--accent)]'
-                      : 'text-[var(--graphite-med)] hover:bg-[var(--graphite-whisper)] hover:text-[var(--graphite)]',
+                      ? 'bg-accent-light text-accent'
+                      : 'text-graphite-med hover:bg-graphite-whisper hover:text-graphite',
                   )}
                 >
                   <Icon className="h-4 w-4 shrink-0" />
@@ -68,17 +76,17 @@ export function Sidebar() {
         </ul>
 
         {/* Divider */}
-        <div className="my-3 border-t border-[var(--graphite-ghost)]" />
+        <div className="my-3 border-t border-graphite-ghost" />
 
         <ul>
           <li>
             <Link
               href="/dashboard/settings"
               className={cn(
-                'flex items-center gap-3 px-3 py-2 rounded-[var(--radius)] text-sm font-medium transition-colors',
+                'flex items-center gap-3 px-3 py-2 rounded-brand text-sm font-medium transition-colors',
                 pathname.startsWith('/dashboard/settings')
-                  ? 'bg-[var(--accent-light)] text-[var(--accent)]'
-                  : 'text-[var(--graphite-med)] hover:bg-[var(--graphite-whisper)] hover:text-[var(--graphite)]',
+                  ? 'bg-accent-light text-accent'
+                  : 'text-graphite-med hover:bg-graphite-whisper hover:text-graphite',
               )}
             >
               <Settings className="h-4 w-4 shrink-0" />
@@ -89,10 +97,10 @@ export function Sidebar() {
       </nav>
 
       {/* User section */}
-      <div className="px-4 py-4 border-t border-[var(--graphite-ghost)] flex items-center gap-3">
+      <div className="px-4 py-4 border-t border-graphite-ghost flex items-center gap-3">
         <UserButton />
         {user && (
-          <span className="text-xs text-[var(--graphite-med)] truncate">
+          <span className="text-xs text-graphite-med truncate">
             {user.primaryEmailAddress?.emailAddress}
           </span>
         )}
