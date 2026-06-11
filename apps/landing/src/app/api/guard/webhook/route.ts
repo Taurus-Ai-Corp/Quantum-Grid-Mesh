@@ -89,12 +89,18 @@ export async function POST(req: Request) {
     }
 
     const rawBody = await req.text()
+    // We do NOT send customer_email in the webhook handler for subscription.deleted
+    // because the customer may have unsubscribed intentionally — keep the data, log it.
     let event: Stripe.Event
     try {
       event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret)
     } catch (err) {
-      console.error('[guard/webhook] Signature verification failed:', err)
-      return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+      const message = err instanceof Error ? err.message : String(err)
+      console.error('[guard/webhook] Signature verification failed:', message)
+      return NextResponse.json(
+        { error: 'Invalid signature', detail: message },
+        { status: 400 },
+      )
     }
 
     console.log(`[guard/webhook] Event: ${event.type}`)

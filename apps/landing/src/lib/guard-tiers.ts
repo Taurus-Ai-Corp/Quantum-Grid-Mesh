@@ -26,6 +26,9 @@ export const GUARD_TIERS = {
     monthlyPrice: 99_00, // €99
     annualMonthly: 79_00, // €79/mo billed annually
     priceLabel: '€99/mo',
+    // Read at module load so the route can use pre-created Stripe Prices.
+    // Set via `vercel env add STRIPE_GUARD_SMB_PRICE_ID production` with
+    // a `price_xxx` ID from your Stripe dashboard.
     stripePriceId: process.env['STRIPE_GUARD_SMB_PRICE_ID'] ?? null,
     cta: 'Start 14-day Trial',
     ctaHref: '/guard/checkout?tier=smb',
@@ -45,6 +48,7 @@ export const GUARD_TIERS = {
     monthlyPrice: 299_00, // €299
     annualMonthly: 249_00, // €249/mo billed annually
     priceLabel: '€299/mo',
+    // Read at module load. Set via `vercel env add STRIPE_GUARD_ENT_PRICE_ID production`.
     stripePriceId: process.env['STRIPE_GUARD_ENT_PRICE_ID'] ?? null,
     cta: 'Start 14-day Trial',
     ctaHref: '/guard/checkout?tier=enterprise',
