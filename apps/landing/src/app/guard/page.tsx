@@ -6,7 +6,6 @@ import Footer from '@/components/footer'
 import { GUARD_TIERS } from '@/lib/guard-tiers'
 
 export default function GuardPage() {
-  const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly')
   const [email, setEmail] = useState('')
   const [tier, setTier] = useState<'sandbox' | 'smb' | 'enterprise'>('sandbox')
   const [loading, setLoading] = useState(false)
@@ -33,7 +32,7 @@ export default function GuardPage() {
         const res = await fetch('/api/guard/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ tier, email, annual: billing === 'annual' }),
+          body: JSON.stringify({ tier, email, annual: false }),
         })
         const data = await res.json()
         if (!res.ok) throw new Error(data.error ?? 'Checkout failed')
@@ -91,12 +90,9 @@ export default function GuardPage() {
     "context": "math question",
     "policy": "eu-ai-act-annex-iii"
   }'`}</code></pre>
-            </div>
           </div>
 
           {/* ─── Response Envelope (NEW in V2) ──────────────────────────── */}
-          {/* Shows the buyer the actual signature artifact - this is what makes
-              the "PQC-signed" claim concrete. */}
           <div className="max-w-3xl mx-auto text-left bg-[#151515] border border-[#262626] rounded-lg overflow-hidden mt-6">
             <div className="flex items-center gap-2 px-4 py-2 border-b border-[#262626] bg-[#0d0d0d]">
               <span className="ml-2 text-xs text-[#666] font-mono">response.json</span>
