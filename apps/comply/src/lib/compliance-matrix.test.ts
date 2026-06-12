@@ -8,6 +8,7 @@
 import { describe, it, expect } from 'vitest'
 import {
   COMPLIANCE_MATRIX,
+  getComplianceMatrix,
   getComplianceCoverage,
   getComplianceGaps,
 } from './compliance-matrix'

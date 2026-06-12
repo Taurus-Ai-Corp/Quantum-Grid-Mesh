@@ -8,6 +8,7 @@
 import { describe, it, expect } from 'vitest'
 import {
   SOC2_CONTROLS,
+  mapPlatformToSoc2,
   getSoc2ReadinessScore,
   getSoc2Gaps,
 } from './soc2-mapper'
