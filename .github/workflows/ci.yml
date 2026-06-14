@@ -32,7 +32,7 @@ jobs:
       - name: Deploy landing to Vercel
         run: |
           echo "Deploying landing to Vercel..."
-          cd apps/landing && npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --scope taurus-s-projects
+          npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --scope taurus-s-projects
           echo "landing deployed"
 
   deploy-comply:
@@ -47,5 +47,5 @@ jobs:
       - name: Deploy comply to Vercel
         run: |
           echo "Deploying comply to Vercel..."
-          cd apps/comply && npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --scope taurus-s-projects
+          npx vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }} --scope taurus-s-projects
           echo "comply deployed"
