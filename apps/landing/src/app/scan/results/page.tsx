@@ -584,6 +584,35 @@ export default function ScanResultsPage() {
             </div>
           </div>
 
+          {/* ── Full 40-page report CTA ── */}
+          <div className="border border-[var(--accent)]/20 bg-[var(--accent)]/[0.04] mt-8 p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.1em] uppercase text-[var(--accent)] mb-2">
+                  <span className="block w-5 h-px bg-[var(--accent)]" aria-hidden="true" />
+                  Full Report
+                </div>
+                <h2
+                  className="font-[var(--font-heading)] font-bold tracking-[-0.02em] mb-2"
+                  style={{ fontSize: 'clamp(20px, 2.5vw, 28px)' }}
+                >
+                  Get Full 40-Page Report — $6,750
+                </h2>
+                <p className="text-[14px] text-[var(--graphite-med)] leading-[1.7]">
+                  Comprehensive PQC vulnerability assessment with methodology, risk matrix, certificate
+                  analysis, algorithm inventory, remediation roadmap, and EU regulatory mapping
+                  (AI Act, GDPR, DORA, NIS2, ENISA PQC). ML-DSA-65 signed.
+                </p>
+              </div>
+              <a
+                href={`/scan/report?scanId=${encodeURIComponent(scanId)}`}
+                className="btn-primary shrink-0 whitespace-nowrap"
+              >
+                Purchase Full Report →
+              </a>
+            </div>
+          </div>
+
         </div>
       </main>
     </>
