@@ -281,7 +281,7 @@ function OrganizationTab({ user }: OrganizationTabProps) {
             Display Name
           </label>
           <p className="text-sm text-graphite">
-            {user?.fullName ?? user?.primaryEmailAddress?.emailAddress ?? '—'}
+            {user?.fullName ?? user?.email ?? '—'}
           </p>
         </div>
 
@@ -291,7 +291,7 @@ function OrganizationTab({ user }: OrganizationTabProps) {
             Email
           </label>
           <p className="text-sm text-graphite">
-            {user?.primaryEmailAddress?.emailAddress ?? '—'}
+            {user?.email ?? '—'}
           </p>
         </div>
 

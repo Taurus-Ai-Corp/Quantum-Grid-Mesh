@@ -169,7 +169,7 @@ export default function PricingPage() {
                   <ChevronRight className="h-4 w-4" />
                 </Link>
               ) : (
-                <PricingCTA plan={plan.key} featured={plan.featured} label={plan.cta} />
+                <PricingCta plan={plan.key} featured={plan.featured} label={plan.cta} />
               )}
             </div>
           ))}

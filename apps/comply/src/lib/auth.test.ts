@@ -104,11 +104,12 @@ describe('auth', () => {
 
   beforeEach(async () => {
     vi.clearAllMocks()
-    process.env.JWT_SECRET = 'test-secret-key-for-testing-minimum-32-characters'
-    process.env.NODE_ENV = 'test'
+    process.env.JWT_SECRET='test-s...ters'
+    // Note: NODE_ENV assignment skipped as it's read-only in tests
 
-    // Get the mocked cookies
-    mockCookies = await cookies()
+    // Get the mocked cookies - cast to satisfy TypeScript
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    mockCookies = (await cookies()) as any
   })
 
   // ─── Token Creation ────────────────────────────────────────────────────────
@@ -299,8 +300,6 @@ describe('auth', () => {
       // Since hashPassword computes SHA-256, we need to use a known hash
       // Let's compute: SHA-256('testpassword') 
       // For testing purposes, we'll use a password whose hash we know
-      const testPassword = 'testpassword'
-      const expectedHash = '95b15426e8df8c6e6d8e8e8b8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e' // placeholder
       
       // The mock returns passwordHash: 'hashed-password', so verifyPassword('testpassword', 'hashed-password') fails
       // We need to mock the db to return a passwordHash that matches SHA-256 of our test password

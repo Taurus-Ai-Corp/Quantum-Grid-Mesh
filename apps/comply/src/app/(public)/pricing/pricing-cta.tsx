@@ -2,24 +2,42 @@
 
 import { useAuth } from '@/lib/auth-context'
 
-export function PricingCta() {
+interface PricingCtaProps {
+  plan: 'starter' | 'growth'
+  featured: boolean
+  label: string
+}
+
+export function PricingCta({ plan, featured, label }: PricingCtaProps) {
   const { user } = useAuth()
+
+  const planUrl = plan === 'growth' 
+    ? '/api/billing/checkout?plan=growth'
+    : '/api/billing/checkout?plan=starter'
 
   return (
     <div className="mt-8 text-center">
       {user ? (
         <a
-          href="/dashboard"
-          className="inline-flex items-center justify-center rounded-brand bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-accent-dark transition-colors"
+          href={planUrl}
+          className={`inline-flex items-center justify-center rounded-brand px-6 py-3 text-sm font-semibold shadow-sm transition-colors ${
+            featured
+              ? 'bg-accent text-white hover:bg-accent-dark'
+              : 'bg-graphite text-white hover:bg-graphite-light'
+          }`}
         >
-          Go to Dashboard
+          {label}
         </a>
       ) : (
         <a
-          href="/sign-in"
-          className="inline-flex items-center justify-center rounded-brand bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-accent-dark transition-colors"
+          href={`/sign-in?redirect=/pricing`}
+          className={`inline-flex items-center justify-center rounded-brand px-6 py-3 text-sm font-semibold shadow-sm transition-colors ${
+            featured
+              ? 'bg-accent text-white hover:bg-accent-dark'
+              : 'bg-graphite text-white hover:bg-graphite-light'
+          }`}
         >
-          Get Started
+          {label}
         </a>
       )}
     </div>

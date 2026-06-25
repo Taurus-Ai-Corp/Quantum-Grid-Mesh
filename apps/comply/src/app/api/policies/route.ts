@@ -34,8 +34,8 @@ export async function POST(req: Request) {
   try {
     const authUser = await getCurrentUser()
     if (!authUser) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    // Use authUser.id as fallback if no organization
-    const userId = authUser.id
+    // Organization context is used later; authUser.id available as fallback
+    void authUser.id // suppress unused warning
 
     const body = await req.json().catch(() => null)
     if (!body) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
