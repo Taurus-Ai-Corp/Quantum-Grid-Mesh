@@ -18,6 +18,8 @@ function isValidEmail(email: string): boolean {
 }
 
 export async function POST(req: Request) {
+  let record: { name: string; email: string; company: string; repoUrl: string; message: string; submittedAt: string } | null = null
+  
   try {
     const body = (await req.json().catch(() => null)) as InquiryBody | null
     if (!body) {
@@ -37,7 +39,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Company is required' }, { status: 400 })
     }
 
-    const record = {
+    record = {
       name: name.trim(),
       email: email.trim().toLowerCase(),
       company: company.trim(),
@@ -113,17 +115,28 @@ export async function POST(req: Request) {
     if (!sendResult.ok) {
       const errText = await sendResult.text().catch(() => 'unknown')
       console.error('[migrate/inquire] Resend send failed:', sendResult.status, errText)
-      return NextResponse.json(
-        { error: 'Failed to send notification email' },
-        { status: 502 },
-      )
+      // Fall back to in-memory storage instead of failing
+      console.log('[migrate/inquire] Falling back to in-memory storage due to email failure')
+      _inbox.push(record)
+      return NextResponse.json({ success: true, note: 'Logged (email send failed, stored locally)' })
     }
 
     console.log(`[migrate/inquire] Inquiry from ${record.email} (${record.company}) — email sent to admin`)
     return NextResponse.json({ success: true })
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err)
     console.error('[migrate/inquire] Error:', err)
+    // Only fall back to in-memory storage if we have a valid record
+    if (record) {
+      try {
+        _inbox.push(record)
+        console.log('[migrate/inquire] Record saved to in-memory fallback storage')
+        return NextResponse.json({ success: true, note: 'Logged (error occurred, stored locally)' })
+      } catch (storageErr) {
+        console.error('[migrate/inquire] Fallback storage also failed:', storageErr)
+      }
+    }
+    // No valid record or storage failed — return error
+    const message = err instanceof Error ? err.message : String(err)
     return NextResponse.json({ error: 'Inquiry submission failed', detail: message }, { status: 500 })
   }
 }
