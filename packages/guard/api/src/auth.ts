@@ -25,7 +25,8 @@
 
 import fp from 'fastify-plugin'
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
-import { createDb, hashApiKey, findGuardKeyByHash, type Database } from '@taurus/db'
+import { createDb, type Database } from '@taurus/db'
+import { hashApiKey, findGuardKeyByHash } from '@taurus/db/guard-keys'
 
 // ---------------------------------------------------------------------------
 // Constants

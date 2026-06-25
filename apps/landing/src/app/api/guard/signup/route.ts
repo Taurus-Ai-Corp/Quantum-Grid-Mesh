@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { createDb, createGuardKey } from '@taurus/db'
+import { createDb } from '@taurus/db'
+import { createGuardKey } from '@taurus/db/guard-keys'
 import { getResend } from '@/lib/billing'
 
 // Executor URL used in examples and emails.

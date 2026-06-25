@@ -7,7 +7,8 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
-    "./schema": { "import": "./dist/schema/index.js", "types": "./dist/schema/index.d.ts" }
+    "./schema": { "import": "./dist/schema/index.js", "types": "./dist/schema/index.d.ts" },
+    "./guard-keys": { "import": "./dist/guard-keys.js", "types": "./dist/guard-keys.d.ts" }
   },
   "scripts": {
     "build": "tsc",

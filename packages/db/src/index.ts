@@ -1,3 +1,7 @@
+// Core exports - safe for Edge Runtime (no node:crypto)
 export { createDb, type Database } from './client'
 export * from './schema/index'
-export * from './guard-keys'
+
+// Guard key functions require node:crypto - import separately:
+// import { ... } from '@taurus/db/guard-keys'
+// Note: Only available in Node.js runtime (API routes, not middleware)

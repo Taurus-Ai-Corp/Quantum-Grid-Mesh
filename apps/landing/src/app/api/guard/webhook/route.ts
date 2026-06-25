@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server'
+import { createDb } from '@taurus/db'
 import {
-  createDb,
   createGuardKey,
   activatePaidTier,
   findGuardKeyByEmail,
   findGuardKeyByCustomerId,
   rotateGuardKeyHash,
   revokeGuardKey,
-} from '@taurus/db'
+} from '@taurus/db/guard-keys'
 import { getStripe, getResend } from '@/lib/billing'
 import type Stripe from 'stripe'
 
