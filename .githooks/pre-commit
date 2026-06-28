@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# GRIDERA pre-commit hook. Activated via: git config core.hooksPath .githooks
+# (auto-installed by the package.json "prepare" script on `pnpm install`).
+set -e
+root="$(git rev-parse --show-toplevel)"
+if [ -f "$root/scripts/check-brand.sh" ]; then
+  bash "$root/scripts/check-brand.sh" || {
+    echo ""
+    echo "✗ commit blocked by GRIDERA brand guard (see above)."
+    exit 1
+  }
+fi
