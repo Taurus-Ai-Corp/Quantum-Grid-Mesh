@@ -20,6 +20,6 @@ export default defineConfig({
     '@taurus/ui',
     '@noble/post-quantum',
     '@noble/hashes',
-    '@hashgraph/sdk',
+    '@hiero-ledger/sdk',
   ],
 })
