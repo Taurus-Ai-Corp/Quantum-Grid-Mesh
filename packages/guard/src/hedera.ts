@@ -33,7 +33,7 @@ async function anchorToHedera(
 ): Promise<AnchorResult> {
   try {
     const { Client, TopicMessageSubmitTransaction, TopicId } =
-      await import('@hashgraph/sdk')
+      await import('@hiero-ledger/sdk')
 
     const client = Client.forName(config.network)
     if (config.operatorId && config.operatorKey) {
